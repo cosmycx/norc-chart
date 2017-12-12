@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Chart</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+  <style>
+
+    html, body {
+      font-family: Lato, sans-serif;
+    }
+
+    div#barTooltip {
+      position: absolute;
+      max-width: 200px;
+      height: auto;
+      padding: 5px;
+      background-color: #EEE;
+      border-radius: 2px;
+      box-shadow: 4px 4px 10px rgba(0,0,0,0.45);
+      pointer-events: none;
+      font-size: 12px;
+    }
+
+
+  </style>
+
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+
+  <div id="chartMount"></div>
+
+  <script src="./chart.js"></script>
+
+
+</body>
+</html>
