@@ -14,27 +14,31 @@
 
     div#barTooltip {
       position: absolute;
-      max-width: 200px;
+      max-width: 250px;
       height: auto;
-      padding: 5px;
+      padding: 10px;
       background-color: #EEE;
       border-radius: 2px;
       box-shadow: 4px 4px 10px rgba(0,0,0,0.45);
       pointer-events: none;
       font-size: 12px;
+      line-height: 150%;
     }
-
 
   </style>
 
 
   <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 </head>
+
 <body>
 
   <div id="chartMount"></div>
 
   <script src="./chart.js"></script>
+
+  <script src="./data_init.js"></script>
 
 
 </body>
