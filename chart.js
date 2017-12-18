@@ -7,29 +7,38 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 	// console.log('chartMountNodeIdStr: ', chartMountNodeIdStr)
 
 
- if(_){} // needs _ (lodash)
+  if(_){} // needs _ (lodash)
 
 
- // sorting of dataObj by lookup sort
- let locations = lookupObj.filter(function(el){
-	 return el.type === 'Location'
- })
- let dataObjAdded = _.mapValues(dataObj, function(o) {
-	 o.sort = _.find(locations, {id:o.loc})['sort']
-	 o.locName = _.find(locations, {id:o.loc})['name']
-	 return o
- })
- let dataObjSorted = _.sortBy(dataObjAdded, [function(o) { return o.sort }])
+  // sorting of dataObj by lookup sort
+  let locations = lookupObj.filter(function(el){
+  	return el.type === 'Location'
+  })
+  let dataObjAdded = _.mapValues(dataObj, function(o) {
+  	o.sort = _.find(locations, {id:o.loc})['sort']
+  	o.locName = _.find(locations, {id:o.loc})['name']
+  	return o
+  })
+  let dataObjSorted = _.sortBy(dataObjAdded, [function(o) { return o.sort }])
 
+  // get chart node for width and clear out
+  let chartMountNode = document.getElementById(chartMountNodeIdStr)
+  let tentvSvgWidth = (chartMountNode.clientWidth || 375)
+  console.log(tentvSvgWidth)
+  if (tentvSvgWidth > 1200) {
+    tentvSvgWidth = 1200
+  } else if (tentvSvgWidth < 375) {
+    tentvSvgWidth = 375
+  }
+  console.log(tentvSvgWidth)
 
 	// settings
 	let barMargin = 10
 	let barThickness = 15
 	let barColor = '#377eb8'
-	let barSvgWidth = 400
 
 	let paddingTextToChart = 15
-	let spaceLeftForText = 155 + paddingTextToChart
+	let spaceLeftForText = 140 + paddingTextToChart
 	let fontSize = 12
 
 	let intervalLineColor = 'Black'
@@ -38,9 +47,12 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 	let spaceAtTop = 25
 	let axisColor = 'Gray'
 
-	// calculated settings
-	let spaceRightForLastAxis = barSvgWidth/4
-	let svgChartWidth = barSvgWidth + spaceLeftForText + spaceRightForLastAxis
+  // calculated width settings
+  let barSvgWidth = tentvSvgWidth - tentvSvgWidth/4 - spaceLeftForText
+
+  let svgChartWidth = spaceLeftForText + barSvgWidth
+  console.log(svgChartWidth)
+
 
 	let maxHci = d3.max(dataObj, function(d){ return parseFloat(d.hci) })
 	let maxDv = d3.max(dataObj, function(d){ return parseFloat(d.dv) })
@@ -54,7 +66,6 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 
 
   // clear out the chart div for a new chart
-  let chartMountNode = document.getElementById(chartMountNodeIdStr)
   while(chartMountNode.firstChild) {
     chartMountNode.removeChild(chartMountNode.firstChild)
   }
