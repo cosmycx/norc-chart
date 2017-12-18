@@ -17,7 +17,8 @@ let compareArr = ['Overall', 'Subgroups', 'Age Groups', 'Gender', 'Race/Ethnicit
 
 // color settings object
 let settingsObj = {
-	colorsArrStr: ['Blue', 'Orange', 'Tomato', 'Purple']
+	colorsArrStr: ['Blue', 'Orange', 'Tomato', 'Purple'],
+	chartTitleStr: 'Percent (%)'
 }
 
 // id of the html node for chart

@@ -53,11 +53,13 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 
 
 	// titles
-	let chartTitle = 'Chart Title'
+	let chartTitle = settingsObj.chartTitleStr || ''
 	d3.select('#' + chartMountNodeIdStr)
-		.append('h3')
+		.append('h4')
 		.text(chartTitle)
 		.style('text-align', 'center')
+    .style('width', svgChartWidth + 'px')
+
 
 
 	// chart
