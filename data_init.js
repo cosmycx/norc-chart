@@ -1,6 +1,11 @@
 // loading the response json
-let data = new Promise(function(resolve, reject){
+let data_1 = new Promise(function(resolve, reject){
 	d3.json('./respOver_1.json', function(data) {
+		resolve(data)
+	})
+})
+let data_2 = new Promise(function(resolve, reject){
+	d3.json('./respOver_2.json', function(data) {
 		resolve(data)
 	})
 })
@@ -24,14 +29,24 @@ let settingsObj = {
 // id of the html node for chart
 let chartMountNodeIdStr = 'chartMount'
 
+let data = {}
+document.getElementById('updateChart').addEventListener('click', function(e) {
 
-Promise.all([data, lookup]).then(function(values){
+	if (_.isEqual(data, data_1)) {
+		data = data_2
+	} else {
+		data = data_1
+	}
 
-	let dataObj = values[0]
-	let lookupObj = values[1]
-	let compareStr = compareArr[2] // 'Age Groups'
+	Promise.all([data, lookup]).then(function(values){
 
-	// chart making function
-	makeChart(dataObj,  lookupObj, compareStr, settingsObj, chartMountNodeIdStr)
+		let dataObj = values[0]
+		let lookupObj = values[1]
+		let compareStr = compareArr[2] // 'Age Groups'
+
+		// chart making function
+		makeChart(dataObj,  lookupObj, compareStr, settingsObj, chartMountNodeIdStr)
+
+	})
 
 })

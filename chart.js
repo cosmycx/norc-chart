@@ -9,6 +9,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 
  if(_){} // needs _ (lodash)
 
+
  // sorting of dataObj by lookup sort
  let locations = lookupObj.filter(function(el){
 	 return el.type === 'Location'
@@ -51,6 +52,12 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 
 	let svgChartHeight = spaceAtTop + dataObj.length * (barMargin + barThickness) + barMargin
 
+
+  // clear out the chart div for a new chart
+  let chartMountNode = document.getElementById(chartMountNodeIdStr)
+  while(chartMountNode.firstChild) {
+    chartMountNode.removeChild(chartMountNode.firstChild)
+  }
 
 	// titles
 	let chartTitle = settingsObj.chartTitleStr || ''
