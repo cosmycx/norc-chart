@@ -9,6 +9,11 @@ let data_2 = new Promise(function(resolve, reject){
 		resolve(data)
 	})
 })
+let data_multiple = new Promise(function(resolve, reject){
+	d3.json('./respMultBars.json', function(data) {
+		resolve(data)
+	})
+})
 
 // loading the lookup json
 let lookup = new Promise(function(resolve, reject){
@@ -18,7 +23,7 @@ let lookup = new Promise(function(resolve, reject){
 })
 
 // compare string choices from dropdown
-let compareArr = ['Overall', 'Subgroups', 'Age Groups', 'Gender', 'Race/Ethnicity']
+let compareArr = ['Overall', 'Year', 'Response', 'Age', 'Gender', 'Race', 'RiskFactorResponse']
 
 // color settings object
 let settingsObj = {
@@ -29,7 +34,23 @@ let settingsObj = {
 // id of the html node for chart
 let chartMountNodeIdStr = 'chartMount'
 
-let data = {}
+let data = data_multiple
+
+Promise.all([data, lookup]).then(function(values){
+
+	let dataObj = values[0]
+	let lookupObj = values[1]
+	let compareStr = compareArr[2] // 'Age Groups'
+
+	// chart making function
+	makeChart(dataObj,  lookupObj, compareStr, settingsObj, chartMountNodeIdStr)
+
+})
+
+
+/*
+let data = data_1
+
 document.getElementById('updateChart').addEventListener('click', function(e) {
 
 	if (_.isEqual(data, data_1)) {
@@ -50,3 +71,4 @@ document.getElementById('updateChart').addEventListener('click', function(e) {
 	})
 
 })
+*/

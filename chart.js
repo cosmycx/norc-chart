@@ -102,10 +102,15 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 			return spaceAtTop + (barThickness + barMargin) * index + barMargin
 		})
 		.attr('width', function(data, index) {
-
-			return xScale(data.dv)
+      if(typeof data.dv !== 'undefined') {
+			  return xScale(data.dv)
+      }
 		})
-		.attr('height', barThickness)
+		.attr('height', function(data, index) {
+      if (typeof data.dv !== 'undefined') {
+        return barThickness
+      }
+    })
 		.attr('fill', barColor)
 		.on('mouseover', function(d) {
 			// console.log(d)
