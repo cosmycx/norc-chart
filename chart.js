@@ -24,13 +24,12 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
   // get chart node for width and clear out
   let chartMountNode = document.getElementById(chartMountNodeIdStr)
   let tentvSvgWidth = (chartMountNode.clientWidth || 375)
-  console.log(tentvSvgWidth)
+
   if (tentvSvgWidth > 1200) {
     tentvSvgWidth = 1200
   } else if (tentvSvgWidth < 375) {
     tentvSvgWidth = 375
   }
-  console.log(tentvSvgWidth)
 
 	// settings
 	let barMargin = 10
@@ -51,7 +50,6 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
   let barSvgWidth = tentvSvgWidth - tentvSvgWidth/4 - spaceLeftForText
 
   let svgChartWidth = spaceLeftForText + barSvgWidth
-  console.log(svgChartWidth)
 
 
 	let maxHci = d3.max(dataObj, function(d){ return parseFloat(d.hci) })
@@ -114,9 +112,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 			barTooltip.transition()
 									.duration(450)
 									.style('opacity', .90)
-			barTooltip.html('<strong>' + d.locName + '<br>' + parseFloat(d.dv) + d.dvu + '</strong><br>CI:(' + d.lci + ' - ' + d.hci + ')')
-								.style('left', (d3.event.pageX + 15) + 'px')
-								.style('top', (d3.event.pageY - 20) + 'px')
+			barTooltip.html(getTooltipStr(d))
+        .style('left', (d3.event.pageX + 15) + 'px')
+        .style('top', (d3.event.pageY - 20) + 'px')
 		})
 		.on('mouseout', function(d) {
 			// console.log('out')
@@ -125,23 +123,33 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 									.style('opacity', 0)
 		})
 
+
+    // interval bars
 		let intervalLines = svgChart.selectAll('intervalBarsG')
 												.data(dataObjSorted)
 												.enter()
 												.append('g')
-		intervalLines // interval bars
+		intervalLines
 				.append('line')
 				.attr('x1', function(data, index) {
-					return xScale(data.lci) + spaceLeftForText
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            return xScale(data.lci) + spaceLeftForText
+          }
 				})
 				.attr('y1', function(data, index) {
-					return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2
+          }
 				})
 				.attr('x2', function(data, index) {
-					return xScale(data.hci) + spaceLeftForText
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            return xScale(data.hci) + spaceLeftForText
+          }
 				})
 				.attr('y2', function(data, index) {
-					return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2
+          }
 				})
 				.attr('stroke', intervalLineColor)
 				.attr('stroke-width', intervalStrokeWidth)
@@ -149,16 +157,24 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 		intervalLines // interval left line
 				.append('line')
 				.attr('x1', function(data, index) {
-					return xScale(data.lci) + spaceLeftForText
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+					  return xScale(data.lci) + spaceLeftForText
+          }
 				})
 				.attr('y1', function(data, index) {
-					return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8
+          }
 				})
 				.attr('x2', function(data, index) {
-					return xScale(data.lci) + spaceLeftForText
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+					  return xScale(data.lci) + spaceLeftForText
+          }
 				})
 				.attr('y2', function(data, index) {
-					return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8
+          }
 				})
 				.attr('stroke', intervalLineColor)
 				.attr('stroke-width', intervalStrokeWidth)
@@ -166,16 +182,24 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 			intervalLines // interval right line
 				.append('line')
 				.attr('x1', function(data, index) {
-					return xScale(data.hci) + spaceLeftForText
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+					  return xScale(data.hci) + spaceLeftForText
+          }
 				})
 				.attr('y1', function(data, index) {
-					return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8
+          }
 				})
 				.attr('x2', function(data, index) {
-					return xScale(data.hci) + spaceLeftForText
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+					  return xScale(data.hci) + spaceLeftForText
+          }
 				})
 				.attr('y2', function(data, index) {
-					return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8
+          }
 				})
 				.attr('stroke', intervalLineColor)
 				.attr('stroke-width', intervalStrokeWidth)
@@ -186,9 +210,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 					barTooltip.transition()
 											.duration(450)
 											.style('opacity', .90)
-					barTooltip.html('<strong>' + d.locName + '<br>' + parseFloat(d.dv) + d.dvu + '</strong><br>CI:(' + d.lci + ' - ' + d.hci + ')')
-										.style('left', (d3.event.pageX + 15) + 'px')
-										.style('top', (d3.event.pageY - 20) + 'px')
+					barTooltip.html(getTooltipStr(d))
+            .style('left', (d3.event.pageX + 15) + 'px')
+            .style('top', (d3.event.pageY - 20) + 'px')
 				})
 				.on('mouseout', function(d) {
 					// console.log('out')
@@ -197,6 +221,15 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 											.style('opacity', 0)
 				})
 
+  function getTooltipStr(d) {
+    let tooltipStr = '<strong>' + d.locName + '<br>' + parseFloat(d.dv) + d.dvu
+
+    if (typeof d.lci !== 'undefined' && typeof d.hci !== 'undefined') {
+      tooltipStr += '</strong><br>CI:(' + d.lci + ' - ' + d.hci + ')'
+    }
+
+    return tooltipStr
+  }
 
 
 	// grid vertical lines
