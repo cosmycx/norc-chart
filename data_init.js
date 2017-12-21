@@ -23,11 +23,11 @@ let lookup = new Promise(function(resolve, reject){
 })
 
 // compare string choices from dropdown
-let compareArr = ['Overall', 'Year', 'Response', 'Age', 'Gender', 'Race', 'RiskFactorResponse']
+let compareArr = ['Overall', 'Year', 'Response', 'AgeGroup', 'Gender', 'RaceEthnicity', 'RiskFactorResponse']
 
 // color settings object
 let settingsObj = {
-	colorsArrStr: ['Blue', 'Orange', 'Tomato', 'Purple'],
+	colorsArrStr: ['#377eb8', 'Orange', 'Tomato', 'Purple', 'Blue', 'Magenta'],
 	chartTitleStr: 'Percent (%)'
 }
 
@@ -40,7 +40,7 @@ Promise.all([data, lookup]).then(function(values){
 
 	let dataObj = values[0]
 	let lookupObj = values[1]
-	let compareStr = compareArr[2] // 'Age Groups'
+	let compareStr = compareArr[3] // 'Age Groups'
 
 	// chart making function
 	makeChart(dataObj,  lookupObj, compareStr, settingsObj, chartMountNodeIdStr)

@@ -9,32 +9,134 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 
   if(_){} // needs _ (lodash)
 
-
-  // sorting of dataObj by lookup sort
+  // adding location sort and location name
   let locations = lookupObj.filter(function(el){
   	return el.type === 'Location'
   })
-  let dataObjAdded = _.mapValues(dataObj, function(o) {
+  let dataObjAdded = _.forEach(dataObj, function(o) {
   	o.sort = _.find(locations, {id:o.loc})['sort']
   	o.locName = _.find(locations, {id:o.loc})['name']
   	return o
   })
-  let dataObjSorted = _.sortBy(dataObjAdded, [function(o) { return o.sort }])
+
+
+  let dataObjSorted = []
+  let colorsObj = {}
+  let groupMapping = {
+    'Overall': 'Overall',
+    'Year': 'yr',
+    'Response': 'rs',
+    'AgeGroup': 'ag',
+    'Gender': 'ge',
+    'RaceEthnicity': 're',
+    'RiskFactorResponse': 'rfr'
+  }
+  let totalBarsArr = []
+  let emptyLocArr = []
+  let groupTypes = []
+  let allLocationsArr = []
+
+
+  if (compareStr === 'Overall') {
+
+    dataObjSorted = _.sortBy(dataObjAdded, [function(o) { return o.sort }])
+
+  } else { // Not Overall
+
+    // adding type name and type sort
+    groupTypes = lookupObj.filter(function(el) {
+      return el.type === compareStr
+    })
+    dataObjAdded = _.forEach(dataObjAdded, function(o) {
+    	o.sortGroup = _.find(groupTypes, {id:o.ag})['sort']
+    	o.groupName = _.find(groupTypes, {id:o.ag})['name']
+    	return o
+    })
+
+
+    // total number of bars
+    let allGroups = _.map(dataObjAdded, groupMapping[compareStr])
+    totalBarsArr = _.uniq(allGroups)
+    let totalBars = totalBarsArr.length
+
+    // locations to check for total bars
+    let allLocations = _.map(dataObjAdded, 'loc')
+    allLocationsArr = _.uniq(allLocations)
+
+    _.forEach(allLocationsArr, function(value) {
+
+      let thisLocationArr = _.filter(dataObjAdded, function(el){
+        return el.loc === value
+      })
+
+      // eliminating locations with no bars
+      let emptyLocation = true
+      _.forEach(thisLocationArr, function(el) {
+        if (typeof el.dv !== 'undefined') {
+          emptyLocation = false
+        }
+      })
+
+      if (emptyLocation) { emptyLocArr.push(value) }
+
+
+      // adding missing bars to location when needed
+      if (_.size(thisLocationArr) != totalBars) {
+        //console.log(thisLocationArr)
+
+        _.forEach(totalBarsArr, function(el) {
+
+            let missingBar = _.find(thisLocationArr, [groupMapping[compareStr], el])
+
+            if (typeof missingBar === 'undefined') {
+              let mBarObj = {}
+              mBarObj['loc'] = thisLocationArr[0].loc
+              mBarObj[groupMapping[compareStr]] = el
+              mBarObj['locName'] = thisLocationArr[0].locName
+              mBarObj['sort'] = thisLocationArr[0].sort
+              mBarObj['sortGroup'] = thisLocationArr[0].sortGroup
+
+              dataObjAdded.push(mBarObj)
+            }
+        })
+      }// .adding missing bars to location
+    })
+
+    // removing empty state locations with no bars
+    let dataObjAddedRem = _.filter(dataObjAdded, function(el) {
+      return !_.includes(emptyLocArr, el.loc)
+    })
+
+
+    // sorting by location and group
+    dataObjSorted = _.sortBy(dataObjAddedRem, ['sort', 'sortGroup'])
+
+
+    // extending colors if not enough
+    while (settingsObj.colorsArrStr.length < totalBarsArr.length) {
+      settingsObj.colorsArrStr.push(settingsObj.colorsArrStr[0])
+    }
+    // making bars color object
+    for (let i = 0; i < totalBarsArr.length; i++) {
+      colorsObj[totalBarsArr[i]] = settingsObj.colorsArrStr[i]
+    }
+
+  } // Not Overall
+
 
   // get chart node for width and clear out
   let chartMountNode = document.getElementById(chartMountNodeIdStr)
   let tentvSvgWidth = (chartMountNode.clientWidth || 375)
 
-  if (tentvSvgWidth > 1200) {
-    tentvSvgWidth = 1200
+  if (tentvSvgWidth > 800) {
+    tentvSvgWidth = 800
   } else if (tentvSvgWidth < 375) {
     tentvSvgWidth = 375
   }
 
 	// settings
-	let barMargin = 10
+	let barMargin = 7
 	let barThickness = 15
-	let barColor = '#377eb8'
 
 	let paddingTextToChart = 15
 	let spaceLeftForText = 140 + paddingTextToChart
@@ -47,20 +149,20 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 	let axisColor = 'Gray'
 
   // calculated width settings
-  let barSvgWidth = tentvSvgWidth - tentvSvgWidth/4 - spaceLeftForText
+  let barSvgWidth = tentvSvgWidth - spaceLeftForText - fontSize
 
-  let svgChartWidth = spaceLeftForText + barSvgWidth
+  let svgChartWidth = tentvSvgWidth
 
 
 	let maxHci = d3.max(dataObj, function(d){ return parseFloat(d.hci) })
 	let maxDv = d3.max(dataObj, function(d){ return parseFloat(d.dv) })
-	let max = Math.max(maxHci, maxDv)
+	let maxHoriz = Math.max(maxHci, maxDv)
 
 	var xScale = d3.scaleLinear()
-									.domain([0, max])
-									.range([0, barSvgWidth - intervalStrokeWidth])
+									.domain([0, maxHoriz + 1])
+									.range([0, barSvgWidth])
 
-	let svgChartHeight = spaceAtTop + dataObj.length * (barMargin + barThickness) + barMargin
+	let svgChartHeight = spaceAtTop + dataObjSorted.length * (barMargin + barThickness) + barMargin //+ allLocationsArr.length * barMargin
 
 
   // clear out the chart div for a new chart
@@ -68,7 +170,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
     chartMountNode.removeChild(chartMountNode.firstChild)
   }
 
-	// titles
+	// title
 	let chartTitle = settingsObj.chartTitleStr || ''
 	d3.select('#' + chartMountNodeIdStr)
 		.append('h4')
@@ -77,12 +179,35 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
     .style('width', svgChartWidth + 'px')
 
 
+  // legend
+  let legendWidth = 250
+  if (compareStr !== 'Overall') {
+
+    d3.select('#' + chartMountNodeIdStr)
+      .append('div')
+      .attr('id', 'legend')
+      .style('width', legendWidth + 'px')
+      .html(getLegendStr())
+  }
+
+  function getLegendStr() {
+      console.log(groupTypes)
+    let legendStr = compareStr
+
+    _.forEach(totalBarsArr, function(groupId, index) {
+      legendStr += '<br><svg width="20" height="15"><rect style="fill:' + colorsObj[totalBarsArr[index]] + ';" width="15" height="15"/></svg>'
+      legendStr += _.find(groupTypes, {'id':groupId})['name']
+    })
+    return legendStr
+  }
+
 
 	// chart
 	let svgChart = d3.select('#' + chartMountNodeIdStr)
 									.append('svg')
 									.attr('width', svgChartWidth)
 									.attr('height', svgChartHeight)
+                  .attr('id', 'svgChart')
 
 
 	let barTooltip = d3.select('#' + chartMountNodeIdStr)
@@ -111,7 +236,13 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
         return barThickness
       }
     })
-		.attr('fill', barColor)
+		.attr('fill', function(data, index) {
+
+      if (compareStr === 'Overall') { return settingsObj.colorsArrStr[0] }
+
+      return colorsObj[data[groupMapping[compareStr]]]
+
+    })
 		.on('mouseover', function(d) {
 			// console.log(d)
 			barTooltip.transition()
@@ -229,6 +360,11 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
   function getTooltipStr(d) {
     let tooltipStr = '<strong>' + d.locName + '<br>' + parseFloat(d.dv) + d.dvu
 
+    if (compareStr !== 'Overall') {
+      tooltipStr += '</strong><br>Group: ' + d.groupName + '</strong>'
+    }
+
+
     if (typeof d.lci !== 'undefined' && typeof d.hci !== 'undefined') {
       tooltipStr += '</strong><br>CI:(' + d.lci + ' - ' + d.hci + ')'
     }
@@ -239,22 +375,40 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 
 	// grid vertical lines
 	let gridArr = [], i = 0
-	while (i < maxDv + 1) {
+	while (i < maxHoriz + 1) {
 		gridArr.push(i)
 		i++
 	}
+  let maxForGridLines = 15
+
 	svgChart.selectAll('vertGridLines')
 		.data(gridArr)
 		.enter()
 		.append('line')
 		.attr('x1', function(data, index) {
-				return xScale(data) + spaceLeftForText
+      if (maxHoriz + 1 < maxForGridLines) {
+        return xScale(data) + spaceLeftForText
+      }
+      if (index % 5 === 0) { return xScale(data) + spaceLeftForText }
 			})
 		.attr('x2', function(data, index) {
-				return xScale(data) + spaceLeftForText
+      if (maxHoriz + 1 < maxForGridLines) {
+        return xScale(data) + spaceLeftForText
+      }
+      if (index % 5 === 0) { return xScale(data) + spaceLeftForText }
 			})
-			.attr('y1', spaceAtTop + barMargin/2)
-			.attr('y2', svgChartHeight - barMargin/2)
+			.attr('y1', function(data, index) {
+        if (maxHoriz + 1 < maxForGridLines) {
+          return spaceAtTop + barMargin/2
+        }
+        if (index % 5 === 0) { return spaceAtTop + barMargin/2 }
+      })
+			.attr('y2', function(data, index) {
+        if (maxHoriz + 1 < maxForGridLines) {
+          return svgChartHeight - barMargin/2
+        }
+        if (index % 5 === 0) { return svgChartHeight - barMargin/2 }
+      })
 			.attr('stroke-dasharray', function(data, index) {
 				if (index !== 0) return '3, 10'
 			})
@@ -266,8 +420,10 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 		.enter()
 		.append('text')
 		.text(function(data, index) {
-
-			return index
+      if (maxHoriz + 1 < maxForGridLines) {
+        return index
+      }
+      if (index % 5 === 0) { return index }
 		})
 		.attr('font-family', 'Lato')
 		.attr('text-anchor', 'center')
@@ -277,22 +433,37 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 		})
 		.attr('y', spaceAtTop - fontSize)
 
+
+    // y axis horiz tick lines
+    let tickLineLen = 8
 		svgChart.selectAll('horizTickLines')
 			.data(dataObjSorted)
 			.enter()
 			.append('line')
-			.attr('x1', spaceLeftForText - 7)
-			.attr('x2', spaceLeftForText)
+			.attr('x1', function(data, index) {
+        if ( data[groupMapping[compareStr]] === totalBarsArr[0] ) {
+          return spaceLeftForText - tickLineLen
+        }
+      })
+			.attr('x2', function(data, index) {
+        if ( data[groupMapping[compareStr]] === totalBarsArr[0] ) {
+          return spaceLeftForText
+        }
+      })
 			.attr('y1', function(data, index) {
-					return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2
+          if ( data[groupMapping[compareStr]] === totalBarsArr[0] ) {
+            return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2
+          }
 				})
 			.attr('y2', function(data, index) {
-					return spaceAtTop + barMargin * (index ) + barThickness * index + barMargin/2
+          if ( data[groupMapping[compareStr]] === totalBarsArr[0] ) {
+            return spaceAtTop + barMargin * (index ) + barThickness * index + barMargin/2
+          }
 				})
 			.attr('stroke-width', '1')
 			.attr('stroke', axisColor)
 		svgChart.append('line') // adding last tick at bottom of chart
-					.attr('x1', spaceLeftForText - 7)
+					.attr('x1', spaceLeftForText - tickLineLen)
 					.attr('x2', spaceLeftForText)
 					.attr('y1', function(data, index) {
 							return  svgChartHeight - barMargin/2
@@ -303,15 +474,15 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 					.attr('stroke-width', '1')
 					.attr('stroke', axisColor)
 
-
 	// state text
 	svgChart.selectAll('locationText')
 		.data(dataObjSorted)
 		.enter()
 		.append('text')
 		.text(function(data) {
-
-			return data.locName
+      if ( data[groupMapping[compareStr]] === totalBarsArr[Math.floor(totalBarsArr.length/2)] ) {
+        return data.locName
+      }
 		})
 		.attr('font-family', 'Lato')
 		.attr('text-anchor', 'end')
