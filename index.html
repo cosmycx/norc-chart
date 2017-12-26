@@ -30,11 +30,32 @@
     }
 
     div#legend {
-      margin: auto;
-      border: 1px solid Blue;
-      padding: 3px;
+      font-size: 12px;
+      padding: 6px;
       float: right;
+      box-sizing: border-box;
     }
+    div.legendLine {
+      margin: 0 auto;
+      overflow: hidden;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    div#legendTitle {
+      padding-bottom: 3px;
+    }
+    div.legendLine>.legendSquare {
+      width: 10%;
+      float:left;
+      box-sizing: border-box;
+      padding-top: 1px;
+    }
+    div.legendLine>.legendSquareText {
+      width: 90%;
+      float:left;
+      box-sizing: border-box;
+    }
+
 
   </style>
 

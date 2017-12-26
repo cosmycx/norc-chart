@@ -1,4 +1,7 @@
 function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNodeIdStr) {
+  // compareStr === 'Overall' - one bar per State
+  let dataCompareColumn = settingsObj.dataCompareColumn
+  let legendTitleStr = settingsObj.legendTitleStr
 
 	// console.log('dataObj: ', dataObj)
 	// console.log('lookupObj: ', lookupObj)
@@ -22,15 +25,6 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 
   let dataObjSorted = []
   let colorsObj = {}
-  let groupMapping = {
-    'Overall': 'Overall',
-    'Year': 'yr',
-    'Response': 'rs',
-    'AgeGroup': 'ag',
-    'Gender': 'ge',
-    'RaceEthnicity': 're',
-    'RiskFactorResponse': 'rfr'
-  }
   let totalBarsArr = []
   let emptyLocArr = []
   let groupTypes = []
@@ -48,16 +42,19 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
       return el.type === compareStr
     })
     dataObjAdded = _.forEach(dataObjAdded, function(o) {
-    	o.sortGroup = _.find(groupTypes, {id:o.ag})['sort']
-    	o.groupName = _.find(groupTypes, {id:o.ag})['name']
+    	o.sortGroup = _.find(groupTypes, {id:o[dataCompareColumn]})['sort']
+    	o.groupName = _.find(groupTypes, {id:o[dataCompareColumn]})['name']
     	return o
     })
 
 
-    // total number of bars
-    let allGroups = _.map(dataObjAdded, groupMapping[compareStr])
-    totalBarsArr = _.uniq(allGroups)
+    // total number of bars, sorted by group sort order
+    let allGroups = _.map(dataObjAdded, dataCompareColumn)
+    totalBarsArr = _.sortBy(_.uniq(allGroups), [function(o) {
+      return _.find(groupTypes, {id:o})['sort']
+    }])
     let totalBars = totalBarsArr.length
+
 
     // locations to check for total bars
     let allLocations = _.map(dataObjAdded, 'loc')
@@ -72,7 +69,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
       // eliminating locations with no bars
       let emptyLocation = true
       _.forEach(thisLocationArr, function(el) {
-        if (typeof el.dv !== 'undefined') {
+        if (!isNaN(parseFloat(el.dv)) && isFinite(el.dv)) {
           emptyLocation = false
         }
       })
@@ -86,12 +83,12 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 
         _.forEach(totalBarsArr, function(el) {
 
-            let missingBar = _.find(thisLocationArr, [groupMapping[compareStr], el])
+            let missingBar = _.find(thisLocationArr, [dataCompareColumn, el])
 
             if (typeof missingBar === 'undefined') {
               let mBarObj = {}
               mBarObj['loc'] = thisLocationArr[0].loc
-              mBarObj[groupMapping[compareStr]] = el
+              mBarObj[dataCompareColumn] = el
               mBarObj['locName'] = thisLocationArr[0].locName
               mBarObj['sort'] = thisLocationArr[0].sort
               mBarObj['sortGroup'] = thisLocationArr[0].sortGroup
@@ -125,11 +122,13 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 
 
   // get chart node for width and clear out
+  let chartMaxWidth = 800
+  if (compareStr === 'Overall') { chartMaxWidth = 1100 }
   let chartMountNode = document.getElementById(chartMountNodeIdStr)
   let tentvSvgWidth = (chartMountNode.clientWidth || 375)
 
-  if (tentvSvgWidth > 800) {
-    tentvSvgWidth = 800
+  if (tentvSvgWidth > chartMaxWidth) {
+    tentvSvgWidth = chartMaxWidth
   } else if (tentvSvgWidth < 375) {
     tentvSvgWidth = 375
   }
@@ -149,7 +148,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 	let axisColor = 'Gray'
 
   // calculated width settings
-  let barSvgWidth = tentvSvgWidth - spaceLeftForText - fontSize
+  let barSvgWidth = tentvSvgWidth - spaceLeftForText - 3 * fontSize
 
   let svgChartWidth = tentvSvgWidth
 
@@ -191,12 +190,12 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
   }
 
   function getLegendStr() {
-      console.log(groupTypes)
-    let legendStr = compareStr
+
+    let legendStr = '<div id="legendTitle">' + legendTitleStr + '</div>'
 
     _.forEach(totalBarsArr, function(groupId, index) {
-      legendStr += '<br><svg width="20" height="15"><rect style="fill:' + colorsObj[totalBarsArr[index]] + ';" width="15" height="15"/></svg>'
-      legendStr += _.find(groupTypes, {'id':groupId})['name']
+      legendStr += '<div class="legendLine"><div class="legendSquare"><svg width="20" height="15"><rect style="fill:' + colorsObj[totalBarsArr[index]] + ';" width="15" height="15"/></svg></div>'
+      legendStr += '<div class="legendSquareText">' + _.find(groupTypes, {'id':groupId})['name'] + '</div></div>'
     })
     return legendStr
   }
@@ -240,7 +239,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 
       if (compareStr === 'Overall') { return settingsObj.colorsArrStr[0] }
 
-      return colorsObj[data[groupMapping[compareStr]]]
+      return colorsObj[data[dataCompareColumn]]
 
     })
 		.on('mouseover', function(d) {
@@ -374,12 +373,16 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 
 
 	// grid vertical lines
+  let maxForGridLines = 15
+  let gridAdjust = 1
+  if (maxHoriz + 1 > maxForGridLines) { gridAdjust = 5 }
+
 	let gridArr = [], i = 0
-	while (i < maxHoriz + 1) {
+
+	while (i < maxHoriz + gridAdjust) {
 		gridArr.push(i)
 		i++
 	}
-  let maxForGridLines = 15
 
 	svgChart.selectAll('vertGridLines')
 		.data(gridArr)
@@ -441,22 +444,22 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 			.enter()
 			.append('line')
 			.attr('x1', function(data, index) {
-        if ( data[groupMapping[compareStr]] === totalBarsArr[0] ) {
+        if ( data[dataCompareColumn] === totalBarsArr[0] ) {
           return spaceLeftForText - tickLineLen
         }
       })
 			.attr('x2', function(data, index) {
-        if ( data[groupMapping[compareStr]] === totalBarsArr[0] ) {
+        if ( data[dataCompareColumn] === totalBarsArr[0] ) {
           return spaceLeftForText
         }
       })
 			.attr('y1', function(data, index) {
-          if ( data[groupMapping[compareStr]] === totalBarsArr[0] ) {
+          if ( data[dataCompareColumn] === totalBarsArr[0] ) {
             return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2
           }
 				})
 			.attr('y2', function(data, index) {
-          if ( data[groupMapping[compareStr]] === totalBarsArr[0] ) {
+          if ( data[dataCompareColumn] === totalBarsArr[0] ) {
             return spaceAtTop + barMargin * (index ) + barThickness * index + barMargin/2
           }
 				})
@@ -480,7 +483,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 		.enter()
 		.append('text')
 		.text(function(data) {
-      if ( data[groupMapping[compareStr]] === totalBarsArr[Math.floor(totalBarsArr.length/2)] ) {
+      if ( data[dataCompareColumn] === totalBarsArr[Math.floor(totalBarsArr.length/2)] ) {
         return data.locName
       }
 		})

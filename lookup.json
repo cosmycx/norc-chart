@@ -40,7 +40,7 @@
 	"type": "AgeGroup"
 }, {
 	"id": "AGE85PLUS",
-	"name": "85 years and older",
+	"name": "85 years and older, very long legend text for wrapping",
 	"sort": 9,
 	"type": "AgeGroup"
 }, {
