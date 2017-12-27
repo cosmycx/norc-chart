@@ -1,3 +1,7 @@
+function isNumber(val) {
+  return !isNaN(parseFloat(val)) && isFinite(val)
+}
+
 function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNodeIdStr) {
 
   let compareStrOverall = 'Overall' //- one bar per State
@@ -48,7 +52,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
       // eliminating locations with no bars
       let emptyLocation = true
       _.forEach(thisLocationArr, function(el) {
-        if (!isNaN(parseFloat(el.dv)) && isFinite(el.dv)) {
+        if (isNumber(el.dv)) {
           emptyLocation = false
         }
       })
@@ -99,7 +103,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
       // eliminating locations with no bars
       let emptyLocation = true
       _.forEach(thisLocationArr, function(el) {
-        if (!isNaN(parseFloat(el.dv)) && isFinite(el.dv)) {
+        if (isNumber(el.dv)) {
           emptyLocation = false
         }
       })
