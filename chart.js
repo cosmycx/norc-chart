@@ -1,5 +1,6 @@
 function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNodeIdStr) {
-  // compareStr === 'Overall' - one bar per State
+
+  let compareStrOverall = 'Overall' //- one bar per State
   let dataCompareColumn = settingsObj.dataCompareColumn
   let legendTitleStr = settingsObj.legendTitleStr
 
@@ -31,9 +32,37 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
   let allLocationsArr = []
 
 
-  if (compareStr === 'Overall') {
+  if (compareStr === compareStrOverall) {
 
-    dataObjSorted = _.sortBy(dataObjAdded, [function(o) { return o.sort }])
+    // locations to check for bars
+    let allLocations = _.map(dataObjAdded, 'loc')
+    allLocationsArr = _.uniq(allLocations)
+
+    _.forEach(allLocationsArr, function(value) {
+
+      let thisLocationArr = _.filter(dataObjAdded, function(el){
+        return el.loc === value
+      })
+
+      // eliminating locations with no bars
+      let emptyLocation = true
+      _.forEach(thisLocationArr, function(el) {
+        if (!isNaN(parseFloat(el.dv)) && isFinite(el.dv)) {
+          emptyLocation = false
+        }
+      })
+
+      if (emptyLocation) { emptyLocArr.push(value) }
+    })
+
+    // removing empty state locations with no bars
+    let dataObjAddedRem = _.filter(dataObjAdded, function(el) {
+      return !_.includes(emptyLocArr, el.loc)
+    })
+
+    // sorting by location and group
+    dataObjSorted = _.sortBy(dataObjAddedRem, ['sort'])
+    //dataObjSorted = _.sortBy(dataObjAdded, [function(o) { return o.sort }])
 
   } else { // Not Overall
 
@@ -118,12 +147,14 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
       colorsObj[totalBarsArr[i]] = settingsObj.colorsArrStr[i]
     }
 
+
+
   } // Not Overall
 
 
   // get chart node for width and clear out
   let chartMaxWidth = 800
-  if (compareStr === 'Overall') { chartMaxWidth = 1100 }
+  if (compareStr === compareStrOverall) { chartMaxWidth = 1100 }
   let chartMountNode = document.getElementById(chartMountNodeIdStr)
   let tentvSvgWidth = (chartMountNode.clientWidth || 375)
 
@@ -180,7 +211,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 
   // legend
   let legendWidth = 250
-  if (compareStr !== 'Overall') {
+  if (compareStr !== compareStrOverall) {
 
     d3.select('#' + chartMountNodeIdStr)
       .append('div')
@@ -237,7 +268,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
     })
 		.attr('fill', function(data, index) {
 
-      if (compareStr === 'Overall') { return settingsObj.colorsArrStr[0] }
+      if (compareStr === compareStrOverall) { return settingsObj.colorsArrStr[0] }
 
       return colorsObj[data[dataCompareColumn]]
 
@@ -359,7 +390,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
   function getTooltipStr(d) {
     let tooltipStr = '<strong>' + d.locName + '<br>' + parseFloat(d.dv) + d.dvu
 
-    if (compareStr !== 'Overall') {
+    if (compareStr !== compareStrOverall) {
       tooltipStr += '</strong><br>Group: ' + d.groupName + '</strong>'
     }
 
@@ -483,9 +514,10 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 		.enter()
 		.append('text')
 		.text(function(data) {
-      if ( data[dataCompareColumn] === totalBarsArr[Math.floor(totalBarsArr.length/2)] ) {
+      if ( compareStr != compareStrOverall && data[dataCompareColumn] === totalBarsArr[Math.floor(totalBarsArr.length/2)] ) {
         return data.locName
       }
+      if ( compareStr === compareStrOverall) { return data.locName }
 		})
 		.attr('font-family', 'Lato')
 		.attr('text-anchor', 'end')

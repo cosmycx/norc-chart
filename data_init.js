@@ -32,7 +32,7 @@ let compareArr = ['Overall', 'Year', 'Response', 'AgeGroup', 'Gender', 'RaceEthn
 
 // color settings object
 let settingsObj = {
-	colorsArrStr: ['#377eb8', 'Orange', 'Tomato', 'Purple', 'Blue', 'Magenta'],
+	colorsArrStr: ['#377eb8', 'Orange', 'Tomato', 'Purple', 'Green', 'Magenta', 'Blue'],
 	chartTitleStr: 'Percent (%)',
 	dataCompareColumn: 're',
 	legendTitleStr: 'Age Group'
