@@ -35,7 +35,8 @@ let settingsObj = {
 	colorsArrStr: ['#377eb8', 'Orange', 'Tomato', 'Purple', 'Green', 'Magenta', 'Blue'],
 	chartTitleStr: 'Percent (%)',
 	dataCompareColumn: 're',
-	legendTitleStr: 'Age Group'
+	legendTitleStr: 'Age Group',
+	decimalPlaces: 2
 }
 // let groupMapping = { // dataCompareColumn
 // 	'Overall': 'Overall',
