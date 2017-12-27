@@ -30,6 +30,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
   let emptyLocArr = []
   let groupTypes = []
   let allLocationsArr = []
+  let totalBars = 0
 
 
   if (compareStr === compareStrOverall) {
@@ -82,7 +83,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
     totalBarsArr = _.sortBy(_.uniq(allGroups), [function(o) {
       return _.find(groupTypes, {id:o})['sort']
     }])
-    let totalBars = totalBarsArr.length
+    totalBars = totalBarsArr.length
 
 
     // locations to check for total bars
@@ -192,7 +193,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 									.domain([0, maxHoriz + 1])
 									.range([0, barSvgWidth])
 
-	let svgChartHeight = spaceAtTop + dataObjSorted.length * (barMargin + barThickness) + barMargin //+ allLocationsArr.length * barMargin
+  let statesSpacingFactor = 3
+
+	let svgChartHeight = spaceAtTop + dataObjSorted.length * (barMargin + barThickness) + barMargin + allLocationsArr.length * (barMargin * statesSpacingFactor)//+ allLocationsArr.length * barMargin
 
 
   // clear out the chart div for a new chart
@@ -246,6 +249,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 											.attr('id', 'barTooltip')
 
 
+
 	// bars
 	svgChart.selectAll('rect')
 		.data(dataObjSorted)
@@ -253,7 +257,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 		.append('rect')
 		.attr('x', spaceLeftForText)
 		.attr('y', function(data, index){
-
+      if ( compareStr !== compareStrOverall ) {
+        return spaceAtTop + (barThickness + barMargin) * index + barMargin + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
+      }
 			return spaceAtTop + (barThickness + barMargin) * index + barMargin
 		})
 		.attr('width', function(data, index) {
@@ -304,6 +310,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 				})
 				.attr('y1', function(data, index) {
           if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
+            }
             return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2
           }
 				})
@@ -314,6 +323,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 				})
 				.attr('y2', function(data, index) {
           if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
+            }
             return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2
           }
 				})
@@ -329,6 +341,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 				})
 				.attr('y1', function(data, index) {
           if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
+            }
 					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8
           }
 				})
@@ -339,6 +354,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 				})
 				.attr('y2', function(data, index) {
           if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
+            }
 					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8
           }
 				})
@@ -354,6 +372,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 				})
 				.attr('y1', function(data, index) {
           if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
+            }
 					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8
           }
 				})
@@ -364,6 +385,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 				})
 				.attr('y2', function(data, index) {
           if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
+            }
 					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8
           }
 				})
@@ -486,11 +510,17 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
       })
 			.attr('y1', function(data, index) {
           if ( data[dataCompareColumn] === totalBarsArr[0] ) {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length) - (statesSpacingFactor * barMargin / 2)
+            }
             return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2
           }
 				})
 			.attr('y2', function(data, index) {
           if ( data[dataCompareColumn] === totalBarsArr[0] ) {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length) - (statesSpacingFactor * barMargin / 2)
+            }
             return spaceAtTop + barMargin * (index ) + barThickness * index + barMargin/2
           }
 				})
@@ -514,7 +544,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 		.enter()
 		.append('text')
 		.text(function(data) {
-      if ( compareStr != compareStrOverall && data[dataCompareColumn] === totalBarsArr[Math.floor(totalBarsArr.length/2)] ) {
+      if ( ( compareStr != compareStrOverall ) && ( data[dataCompareColumn] === totalBarsArr[Math.floor(totalBarsArr.length/2)] ) ) {
         return data.locName
       }
       if ( compareStr === compareStrOverall) { return data.locName }
@@ -524,6 +554,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 		.attr('font-size', fontSize)
 		.attr('x', spaceLeftForText - paddingTextToChart)
 		.attr('y', function(data, index) {
+      if ( compareStr !== compareStrOverall ) {
+        return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + fontSize/3 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
+      }
 				return spaceAtTop + barMargin * (index+1) + barThickness * index + barThickness/2 + fontSize/3
 		 })
 
