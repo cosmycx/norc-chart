@@ -196,6 +196,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
   let statesSpacingFactor = 3
 
 	let svgChartHeight = spaceAtTop + dataObjSorted.length * (barMargin + barThickness) + barMargin + allLocationsArr.length * (barMargin * statesSpacingFactor)//+ allLocationsArr.length * barMargin
+  if(compareStr === compareStrOverall) {
+    svgChartHeight = spaceAtTop + dataObjSorted.length * (barMargin + barThickness) + barMargin
+  }
 
 
   // clear out the chart div for a new chart
@@ -511,6 +514,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 			.attr('y1', function(data, index) {
           if ( data[dataCompareColumn] === totalBarsArr[0] ) {
             if ( compareStr !== compareStrOverall ) {
+              if (index === 0) {
+                return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
+              }
               return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length) - (statesSpacingFactor * barMargin / 2)
             }
             return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2
@@ -519,6 +525,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 			.attr('y2', function(data, index) {
           if ( data[dataCompareColumn] === totalBarsArr[0] ) {
             if ( compareStr !== compareStrOverall ) {
+              if (index === 0) {
+                return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
+              }
               return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length) - (statesSpacingFactor * barMargin / 2)
             }
             return spaceAtTop + barMargin * (index ) + barThickness * index + barMargin/2
