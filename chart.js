@@ -1,8 +1,13 @@
+function isNumber(val) {
+  return !isNaN(parseFloat(val)) && isFinite(val)
+}
+
 function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNodeIdStr) {
 
   let compareStrOverall = 'Overall' //- one bar per State
   let dataCompareColumn = settingsObj.dataCompareColumn
   let legendTitleStr = settingsObj.legendTitleStr
+  let decimalPlaces = settingsObj.decimalPlaces
 
 	// console.log('dataObj: ', dataObj)
 	// console.log('lookupObj: ', lookupObj)
@@ -48,7 +53,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
       // eliminating locations with no bars
       let emptyLocation = true
       _.forEach(thisLocationArr, function(el) {
-        if (!isNaN(parseFloat(el.dv)) && isFinite(el.dv)) {
+        if (isNumber(el.dv)) {
           emptyLocation = false
         }
       })
@@ -99,7 +104,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
       // eliminating locations with no bars
       let emptyLocation = true
       _.forEach(thisLocationArr, function(el) {
-        if (!isNaN(parseFloat(el.dv)) && isFinite(el.dv)) {
+        if (isNumber(el.dv)) {
           emptyLocation = false
         }
       })
@@ -414,16 +419,17 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 											.style('opacity', 0)
 				})
 
-  function getTooltipStr(d) {
-    let tooltipStr = '<strong>' + d.locName + '<br>' + parseFloat(d.dv) + d.dvu
+  function getTooltipStr (d) {
+    const groupName = compareStr !== compareStrOverall ? '<br>' + d.groupName : ''
 
-    if (compareStr !== compareStrOverall) {
-      tooltipStr += '</strong><br>Group: ' + d.groupName + '</strong>'
+    let tooltipStr = '<strong>' + d.locName + groupName + '<br>' + Number(d.dv).toFixed(decimalPlaces) + d.dvu + '</strong>'
+
+    if (isNumber(d.lci) && isNumber(d.hci)) {
+      tooltipStr += '<br>CI (' + d.lci + ' - ' + d.hci + ')'
     }
 
-
-    if (typeof d.lci !== 'undefined' && typeof d.hci !== 'undefined') {
-      tooltipStr += '</strong><br>CI:(' + d.lci + ' - ' + d.hci + ')'
+    if (isNumber(d.ss)) {
+      tooltipStr += '<br>n = ' + Number(d.ss).toLocaleString()
     }
 
     return tooltipStr
