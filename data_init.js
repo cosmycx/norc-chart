@@ -21,9 +21,9 @@ let data_4 = new Promise(function(resolve, reject){
 })
 
 // loading the lookup json
-let lookup = new Promise(function(resolve, reject){
-	d3.json('./lookup.json', function(lookup) {
-		resolve(lookup)
+let lku = new Promise(function(resolve, reject){
+	d3.json('./lku.json', function(lku) {
+		resolve(lku)
 	})
 })
 
@@ -36,7 +36,8 @@ let settingsObj = {
 	chartTitleStr: 'Percent (%)',
 	dataCompareColumn: 're',
 	legendTitleStr: 'Age Group',
-	decimalPlaces: 2
+	decimalPlaces: 2,
+	confidenceIntervalLabel: '95% CI'
 }
 // let groupMapping = { // dataCompareColumn
 // 	'Overall': 'Overall',
@@ -53,14 +54,14 @@ let chartMountNodeIdStr = 'chartMount'
 
 let data = data_4
 
-Promise.all([data, lookup]).then(function(values){
+Promise.all([data, lku]).then(function(values){
 
 	let dataObj = values[0]
-	let lookupObj = values[1]
+	let lku = values[1]
 	let compareStr = compareArr[5] // 'Age Groups'
 
 	// chart making function
-	makeChart(dataObj,  lookupObj, compareStr, settingsObj, chartMountNodeIdStr)
+	makeChart(dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 
 })
 

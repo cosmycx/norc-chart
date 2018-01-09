@@ -2,7 +2,7 @@ function isNumber(val) {
   return !isNaN(parseFloat(val)) && isFinite(val)
 }
 
-function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNodeIdStr) {
+function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr) {
 
   let compareStrOverall = 'Overall' //- one bar per State
   let dataCompareColumn = settingsObj.dataCompareColumn
@@ -19,12 +19,9 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
   if(_){} // needs _ (lodash)
 
   // adding location sort and location name
-  let locations = lookupObj.filter(function(el){
-  	return el.type === 'Location'
-  })
-  let dataObjAdded = _.forEach(dataObj, function(o) {
-  	o.sort = _.find(locations, {id:o.loc})['sort']
-  	o.locName = _.find(locations, {id:o.loc})['name']
+  let dataObjAdded = _.forEach(dataObj, function (o) {
+    o.sort = lku.Location[o.loc].sort
+    o.locName = lku.Location[o.loc].name
   	return o
   })
 
@@ -33,7 +30,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
   let colorsObj = {}
   let totalBarsArr = []
   let emptyLocArr = []
-  let groupTypes = []
+  let groupTypes = {}
   let allLocationsArr = []
   let totalBars = 0
 
@@ -73,12 +70,11 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
   } else { // Not Overall
 
     // adding type name and type sort
-    groupTypes = lookupObj.filter(function(el) {
-      return el.type === compareStr
-    })
+    groupTypes = lku[compareStr]
+    
     dataObjAdded = _.forEach(dataObjAdded, function(o) {
-    	o.sortGroup = _.find(groupTypes, {id:o[dataCompareColumn]})['sort']
-    	o.groupName = _.find(groupTypes, {id:o[dataCompareColumn]})['name']
+      o.sortGroup = groupTypes[o[dataCompareColumn]].sort
+      o.groupName = groupTypes[o[dataCompareColumn]].name
     	return o
     })
 
@@ -86,7 +82,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
     // total number of bars, sorted by group sort order
     let allGroups = _.map(dataObjAdded, dataCompareColumn)
     totalBarsArr = _.sortBy(_.uniq(allGroups), [function(o) {
-      return _.find(groupTypes, {id:o})['sort']
+      return groupTypes[o].sort
     }])
     totalBars = totalBarsArr.length
 
@@ -237,7 +233,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
 
     _.forEach(totalBarsArr, function(groupId, index) {
       legendStr += '<div class="legendLine"><div class="legendSquare"><svg width="20" height="15"><rect style="fill:' + colorsObj[totalBarsArr[index]] + ';" width="15" height="15"/></svg></div>'
-      legendStr += '<div class="legendSquareText">' + _.find(groupTypes, {'id':groupId})['name'] + '</div></div>'
+      legendStr += '<div class="legendSquareText">' + groupTypes[groupId].name + '</div></div>'
     })
     return legendStr
   }
@@ -425,7 +421,7 @@ function makeChart (dataObj,  lookupObj, compareStr, settingsObj, chartMountNode
     let tooltipStr = '<strong>' + d.locName + groupName + '<br>' + Number(d.dv).toFixed(decimalPlaces) + d.dvu + '</strong>'
 
     if (isNumber(d.lci) && isNumber(d.hci)) {
-      tooltipStr += '<br>CI (' + d.lci + ' - ' + d.hci + ')'
+      tooltipStr += '<br>' + settingsObj.confidenceIntervalLabel + ' (' + d.lci + ' - ' + d.hci + ')'
     }
 
     if (isNumber(d.ss)) {
