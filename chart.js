@@ -71,7 +71,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 
     // adding type name and type sort
     groupTypes = lku[compareStr]
-    
+
     dataObjAdded = _.forEach(dataObjAdded, function(o) {
       o.sortGroup = groupTypes[o[dataCompareColumn]].sort
       o.groupName = groupTypes[o[dataCompareColumn]].name
@@ -156,7 +156,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 
   // get chart node for width and clear out
   let chartMaxWidth = 800
-  if (compareStr === compareStrOverall) { chartMaxWidth = 1100 }
+  if (compareStr === compareStrOverall) { chartMaxWidth = 1200 }
   let chartMountNode = document.getElementById(chartMountNodeIdStr)
   let tentvSvgWidth = (chartMountNode.clientWidth || 375)
 
@@ -167,8 +167,11 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
   }
 
 	// settings
-	let barMargin = 7
-	let barThickness = 15
+	let barMargin = 12
+  if(compareStr !== compareStrOverall) { barMargin = 0 }
+  let stateBarMargin = 25
+
+	let barThickness = 18
 
 	let paddingTextToChart = 15
 	let spaceLeftForText = 140 + paddingTextToChart
@@ -196,7 +199,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 
   let statesSpacingFactor = 3
 
-	let svgChartHeight = spaceAtTop + dataObjSorted.length * (barMargin + barThickness) + barMargin + allLocationsArr.length * (barMargin * statesSpacingFactor)//+ allLocationsArr.length * barMargin
+	let svgChartHeight = spaceAtTop + dataObjSorted.length * (barMargin + barThickness) + barMargin + allLocationsArr.length * stateBarMargin //+ allLocationsArr.length * barMargin
   if(compareStr === compareStrOverall) {
     svgChartHeight = spaceAtTop + dataObjSorted.length * (barMargin + barThickness) + barMargin
   }
@@ -253,186 +256,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 											.attr('id', 'barTooltip')
 
 
-
-	// bars
-	svgChart.selectAll('rect')
-		.data(dataObjSorted)
-		.enter()
-		.append('rect')
-		.attr('x', spaceLeftForText)
-		.attr('y', function(data, index){
-      if ( compareStr !== compareStrOverall ) {
-        return spaceAtTop + (barThickness + barMargin) * index + barMargin + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
-      }
-			return spaceAtTop + (barThickness + barMargin) * index + barMargin
-		})
-		.attr('width', function(data, index) {
-      if(typeof data.dv !== 'undefined') {
-			  return xScale(data.dv)
-      }
-		})
-		.attr('height', function(data, index) {
-      if (typeof data.dv !== 'undefined') {
-        return barThickness
-      }
-    })
-		.attr('fill', function(data, index) {
-
-      if (compareStr === compareStrOverall) { return settingsObj.colorsArrStr[0] }
-
-      return colorsObj[data[dataCompareColumn]]
-
-    })
-		.on('mouseover', function(d) {
-			// console.log(d)
-			barTooltip.transition()
-									.duration(450)
-									.style('opacity', .90)
-			barTooltip.html(getTooltipStr(d))
-        .style('left', (d3.event.pageX + 15) + 'px')
-        .style('top', (d3.event.pageY - 20) + 'px')
-		})
-		.on('mouseout', function(d) {
-			// console.log('out')
-			barTooltip.transition()
-									.duration(250)
-									.style('opacity', 0)
-		})
-
-
-    // interval bars
-		let intervalLines = svgChart.selectAll('intervalBarsG')
-												.data(dataObjSorted)
-												.enter()
-												.append('g')
-		intervalLines
-				.append('line')
-				.attr('x1', function(data, index) {
-          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
-            return xScale(data.lci) + spaceLeftForText
-          }
-				})
-				.attr('y1', function(data, index) {
-          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
-            if ( compareStr !== compareStrOverall ) {
-              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
-            }
-            return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2
-          }
-				})
-				.attr('x2', function(data, index) {
-          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
-            return xScale(data.hci) + spaceLeftForText
-          }
-				})
-				.attr('y2', function(data, index) {
-          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
-            if ( compareStr !== compareStrOverall ) {
-              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
-            }
-            return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2
-          }
-				})
-				.attr('stroke', intervalLineColor)
-				.attr('stroke-width', intervalStrokeWidth)
-
-		intervalLines // interval left line
-				.append('line')
-				.attr('x1', function(data, index) {
-          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
-					  return xScale(data.lci) + spaceLeftForText
-          }
-				})
-				.attr('y1', function(data, index) {
-          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
-            if ( compareStr !== compareStrOverall ) {
-              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
-            }
-					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8
-          }
-				})
-				.attr('x2', function(data, index) {
-          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
-					  return xScale(data.lci) + spaceLeftForText
-          }
-				})
-				.attr('y2', function(data, index) {
-          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
-            if ( compareStr !== compareStrOverall ) {
-              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
-            }
-					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8
-          }
-				})
-				.attr('stroke', intervalLineColor)
-				.attr('stroke-width', intervalStrokeWidth)
-
-			intervalLines // interval right line
-				.append('line')
-				.attr('x1', function(data, index) {
-          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
-					  return xScale(data.hci) + spaceLeftForText
-          }
-				})
-				.attr('y1', function(data, index) {
-          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
-            if ( compareStr !== compareStrOverall ) {
-              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
-            }
-					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8
-          }
-				})
-				.attr('x2', function(data, index) {
-          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
-					  return xScale(data.hci) + spaceLeftForText
-          }
-				})
-				.attr('y2', function(data, index) {
-          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
-            if ( compareStr !== compareStrOverall ) {
-              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
-            }
-					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8
-          }
-				})
-				.attr('stroke', intervalLineColor)
-				.attr('stroke-width', intervalStrokeWidth)
-
-			intervalLines
-				.on('mouseover', function(d) {
-					//console.log(d)
-					barTooltip.transition()
-											.duration(450)
-											.style('opacity', .90)
-					barTooltip.html(getTooltipStr(d))
-            .style('left', (d3.event.pageX + 15) + 'px')
-            .style('top', (d3.event.pageY - 20) + 'px')
-				})
-				.on('mouseout', function(d) {
-					// console.log('out')
-					barTooltip.transition()
-											.duration(250)
-											.style('opacity', 0)
-				})
-
-  function getTooltipStr (d) {
-    const groupName = compareStr !== compareStrOverall ? '<br>' + d.groupName : ''
-
-    let tooltipStr = '<strong>' + d.locName + groupName + '<br>' + Number(d.dv).toFixed(decimalPlaces) + d.dvu + '</strong>'
-
-    if (isNumber(d.lci) && isNumber(d.hci)) {
-      tooltipStr += '<br>' + settingsObj.confidenceIntervalLabel + ' (' + d.lci + ' - ' + d.hci + ')'
-    }
-
-    if (isNumber(d.ss)) {
-      tooltipStr += '<br>n = ' + Number(d.ss).toLocaleString()
-    }
-
-    return tooltipStr
-  }
-
-
-	// grid vertical lines
+  // grid vertical lines
   let maxForGridLines = 15
   let gridAdjust = 1
   if (maxHoriz + 1 > maxForGridLines) { gridAdjust = 5 }
@@ -497,6 +321,186 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 		.attr('y', spaceAtTop - fontSize)
 
 
+
+	// bars
+	svgChart.selectAll('rect')
+		.data(dataObjSorted)
+		.enter()
+		.append('rect')
+		.attr('x', spaceLeftForText)
+		.attr('y', function(data, index){
+      if ( compareStr !== compareStrOverall ) {
+        return spaceAtTop + (barThickness + barMargin) * index + barMargin + stateBarMargin * Math.floor(index / totalBarsArr.length)
+      }
+			return spaceAtTop + (barThickness + barMargin) * index + barMargin
+		})
+		.attr('width', function(data, index) {
+      if(typeof data.dv !== 'undefined') {
+			  return xScale(data.dv)
+      }
+		})
+		.attr('height', function(data, index) {
+      if (typeof data.dv !== 'undefined') {
+        return barThickness
+      }
+    })
+		.attr('fill', function(data, index) {
+
+      if (compareStr === compareStrOverall) { return settingsObj.colorsArrStr[0] }
+
+      return colorsObj[data[dataCompareColumn]]
+
+    })
+		.on('mouseover', function(d) {
+			// console.log(d)
+			barTooltip.transition()
+									.duration(450)
+									.style('opacity', 1)
+			barTooltip.html(getTooltipStr(d))
+        .style('left', (d3.event.pageX + 15) + 'px')
+        .style('top', (d3.event.pageY - 20) + 'px')
+		})
+		.on('mouseout', function(d) {
+			// console.log('out')
+			barTooltip.transition()
+									.duration(250)
+									.style('opacity', 0)
+		})
+
+
+    // interval bars
+		let intervalLines = svgChart.selectAll('intervalBarsG')
+												.data(dataObjSorted)
+												.enter()
+												.append('g')
+		intervalLines
+				.append('line')
+				.attr('x1', function(data, index) {
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            return xScale(data.lci) + spaceLeftForText
+          }
+				})
+				.attr('y1', function(data, index) {
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + stateBarMargin * Math.floor(index / totalBarsArr.length)
+            }
+            return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2
+          }
+				})
+				.attr('x2', function(data, index) {
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            return xScale(data.hci) + spaceLeftForText
+          }
+				})
+				.attr('y2', function(data, index) {
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + stateBarMargin * Math.floor(index / totalBarsArr.length)
+            }
+            return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2
+          }
+				})
+				.attr('stroke', intervalLineColor)
+				.attr('stroke-width', intervalStrokeWidth)
+
+		intervalLines // interval left line
+				.append('line')
+				.attr('x1', function(data, index) {
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+					  return xScale(data.lci) + spaceLeftForText
+          }
+				})
+				.attr('y1', function(data, index) {
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8 + stateBarMargin * Math.floor(index / totalBarsArr.length)
+            }
+					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8
+          }
+				})
+				.attr('x2', function(data, index) {
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+					  return xScale(data.lci) + spaceLeftForText
+          }
+				})
+				.attr('y2', function(data, index) {
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8 + stateBarMargin * Math.floor(index / totalBarsArr.length)
+            }
+					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8
+          }
+				})
+				.attr('stroke', intervalLineColor)
+				.attr('stroke-width', intervalStrokeWidth)
+
+			intervalLines // interval right line
+				.append('line')
+				.attr('x1', function(data, index) {
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+					  return xScale(data.hci) + spaceLeftForText
+          }
+				})
+				.attr('y1', function(data, index) {
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8 + stateBarMargin * Math.floor(index / totalBarsArr.length)
+            }
+					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 - barThickness/8
+          }
+				})
+				.attr('x2', function(data, index) {
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+					  return xScale(data.hci) + spaceLeftForText
+          }
+				})
+				.attr('y2', function(data, index) {
+          if(typeof data.lci !== 'undefined' && typeof data.hci !== 'undefined') {
+            if ( compareStr !== compareStrOverall ) {
+              return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8 + stateBarMargin * Math.floor(index / totalBarsArr.length)
+            }
+					  return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + barThickness/8
+          }
+				})
+				.attr('stroke', intervalLineColor)
+				.attr('stroke-width', intervalStrokeWidth)
+
+			intervalLines
+				.on('mouseover', function(d) {
+					//console.log(d)
+					barTooltip.transition()
+											.duration(450)
+											.style('opacity', 1)
+					barTooltip.html(getTooltipStr(d))
+            .style('left', (d3.event.pageX + 15) + 'px')
+            .style('top', (d3.event.pageY - 20) + 'px')
+				})
+				.on('mouseout', function(d) {
+					// console.log('out')
+					barTooltip.transition()
+											.duration(250)
+											.style('opacity', 0)
+				})
+
+  function getTooltipStr (d) {
+    const groupName = compareStr !== compareStrOverall ? '<br>' + d.groupName : ''
+
+    let tooltipStr = '<strong>' + d.locName + groupName + '<br>' + Number(d.dv).toFixed(decimalPlaces) + d.dvu + '</strong>'
+
+    if (isNumber(d.lci) && isNumber(d.hci)) {
+      tooltipStr += '<br>' + settingsObj.confidenceIntervalLabel + ' (' + d.lci + ' - ' + d.hci + ')'
+    }
+
+    if (isNumber(d.ss)) {
+      tooltipStr += '<br>n = ' + Number(d.ss).toLocaleString()
+    }
+
+    return tooltipStr
+  }
+
+
+
     // y axis horiz tick lines
     let tickLineLen = 8
 		svgChart.selectAll('horizTickLines')
@@ -517,22 +521,22 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
           if ( data[dataCompareColumn] === totalBarsArr[0] ) {
             if ( compareStr !== compareStrOverall ) {
               if (index === 0) {
-                return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
+                return spaceAtTop + barMargin * index + barThickness  * index + barMargin/2 + stateBarMargin * Math.floor(index / totalBarsArr.length)
               }
-              return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length) - (statesSpacingFactor * barMargin / 2)
+              return spaceAtTop + barMargin * index + barThickness  * index + barMargin/2 + stateBarMargin * Math.floor(index / totalBarsArr.length) - (stateBarMargin / 2)
             }
-            return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2
+            return spaceAtTop + barMargin * index + barThickness  * index + barMargin/2
           }
 				})
 			.attr('y2', function(data, index) {
           if ( data[dataCompareColumn] === totalBarsArr[0] ) {
             if ( compareStr !== compareStrOverall ) {
               if (index === 0) {
-                return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
+                return spaceAtTop + barMargin * index + barThickness  * index + barMargin/2 + stateBarMargin * Math.floor(index / totalBarsArr.length)
               }
-              return spaceAtTop + barMargin * (index ) + barThickness  * index + barMargin/2 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length) - (statesSpacingFactor * barMargin / 2)
+              return spaceAtTop + barMargin * index + barThickness  * index + barMargin/2 + stateBarMargin * Math.floor(index / totalBarsArr.length) - (stateBarMargin / 2)
             }
-            return spaceAtTop + barMargin * (index ) + barThickness * index + barMargin/2
+            return spaceAtTop + barMargin * index + barThickness * index + barMargin/2
           }
 				})
 			.attr('stroke-width', '1')
@@ -566,7 +570,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 		.attr('x', spaceLeftForText - paddingTextToChart)
 		.attr('y', function(data, index) {
       if ( compareStr !== compareStrOverall ) {
-        return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + fontSize/3 + (statesSpacingFactor * barMargin) * Math.floor(index / totalBarsArr.length)
+        return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + fontSize/3 + stateBarMargin * Math.floor(index / totalBarsArr.length)
       }
 				return spaceAtTop + barMargin * (index+1) + barThickness * index + barThickness/2 + fontSize/3
 		 })
