@@ -180,7 +180,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 	let intervalLineColor = 'Black'
 	let intervalStrokeWidth = 1
 
-	let spaceAtTop = 25
+	let spaceAtTop = 2 * stateBarMargin
 	let axisColor = 'Gray'
 
   // calculated width settings
@@ -286,15 +286,15 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 			})
 			.attr('y1', function(data, index) {
         if (maxHoriz + 1 < maxForGridLines) {
-          return spaceAtTop + barMargin/2
+          return spaceAtTop - stateBarMargin/2
         }
-        if (index % 5 === 0) { return spaceAtTop + barMargin/2 }
+        if (index % 5 === 0) { return spaceAtTop - stateBarMargin/2 }
       })
 			.attr('y2', function(data, index) {
         if (maxHoriz + 1 < maxForGridLines) {
-          return svgChartHeight - barMargin/2
+          return svgChartHeight - stateBarMargin/2
         }
-        if (index % 5 === 0) { return svgChartHeight - barMargin/2 }
+        if (index % 5 === 0) { return svgChartHeight - stateBarMargin/2 }
       })
 			.attr('stroke-dasharray', function(data, index) {
 				if (index !== 0) return '3, 10'
@@ -318,7 +318,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 		.attr('x', function(data, index){
 			return spaceLeftForText + xScale(index) - fontSize/3
 		})
-		.attr('y', spaceAtTop - fontSize)
+		.attr('y', spaceAtTop - fontSize - stateBarMargin / 2)
 
 
 
@@ -520,9 +520,9 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 			.attr('y1', function(data, index) {
           if ( data[dataCompareColumn] === totalBarsArr[0] ) {
             if ( compareStr !== compareStrOverall ) {
-              if (index === 0) {
-                return spaceAtTop + barMargin * index + barThickness  * index + barMargin/2 + stateBarMargin * Math.floor(index / totalBarsArr.length)
-              }
+              // if (index === 0) {
+              //   return spaceAtTop + barMargin * index + barThickness  * index + barMargin/2 + stateBarMargin * Math.floor(index / totalBarsArr.length) - (stateBarMargin / 2)
+              // }
               return spaceAtTop + barMargin * index + barThickness  * index + barMargin/2 + stateBarMargin * Math.floor(index / totalBarsArr.length) - (stateBarMargin / 2)
             }
             return spaceAtTop + barMargin * index + barThickness  * index + barMargin/2
@@ -531,9 +531,9 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 			.attr('y2', function(data, index) {
           if ( data[dataCompareColumn] === totalBarsArr[0] ) {
             if ( compareStr !== compareStrOverall ) {
-              if (index === 0) {
-                return spaceAtTop + barMargin * index + barThickness  * index + barMargin/2 + stateBarMargin * Math.floor(index / totalBarsArr.length)
-              }
+              // if (index === 0) {
+              //   return spaceAtTop + barMargin * index + barThickness  * index + barMargin/2 + stateBarMargin * Math.floor(index / totalBarsArr.length) - (stateBarMargin / 2)
+              // }
               return spaceAtTop + barMargin * index + barThickness  * index + barMargin/2 + stateBarMargin * Math.floor(index / totalBarsArr.length) - (stateBarMargin / 2)
             }
             return spaceAtTop + barMargin * index + barThickness * index + barMargin/2
@@ -545,10 +545,10 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 					.attr('x1', spaceLeftForText - tickLineLen)
 					.attr('x2', spaceLeftForText)
 					.attr('y1', function(data, index) {
-							return  svgChartHeight - barMargin/2
+							return  svgChartHeight - stateBarMargin/2
 						})
 					.attr('y2', function(data, index) {
-							return  svgChartHeight - barMargin/2
+							return  svgChartHeight - stateBarMargin/2
 						})
 					.attr('stroke-width', '1')
 					.attr('stroke', axisColor)
