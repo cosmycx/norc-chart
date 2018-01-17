@@ -168,8 +168,10 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 
 	// settings
 	let barMargin = 12
-  if(compareStr !== compareStrOverall) { barMargin = 0 }
   let stateBarMargin = 25
+
+  if(compareStr !== compareStrOverall) { barMargin = 0 }
+  if(compareStr === compareStrOverall) { stateBarMargin = barMargin }
 
 	let barThickness = 18
 
@@ -180,7 +182,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 	let intervalLineColor = 'Black'
 	let intervalStrokeWidth = 1
 
-	let spaceAtTop = 2 * stateBarMargin
+	let spaceAtTop = 50
 	let axisColor = 'Gray'
 
   // calculated width settings
@@ -286,7 +288,9 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 			})
 			.attr('y1', function(data, index) {
         if (maxHoriz + 1 < maxForGridLines) {
-          return spaceAtTop - stateBarMargin/2
+
+          if ( compareStr !== compareStrOverall ) { return spaceAtTop - stateBarMargin/2 }
+          return spaceAtTop + stateBarMargin/2 
         }
         if (index % 5 === 0) { return spaceAtTop - stateBarMargin/2 }
       })
@@ -498,7 +502,6 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 
     return tooltipStr
   }
-
 
 
     // y axis horiz tick lines

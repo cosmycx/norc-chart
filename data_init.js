@@ -34,7 +34,7 @@ let compareArr = ['Overall', 'Year', 'Response', 'AgeGroup', 'Gender', 'RaceEthn
 let settingsObj = {
 	colorsArrStr: ['#377eb8', 'Orange', 'Tomato', 'Purple', 'Green', 'Magenta', 'Blue'],
 	chartTitleStr: 'Percent (%)',
-	dataCompareColumn: 're',
+	dataCompareColumn: 'Overall',
 	legendTitleStr: 'Age Group',
 	decimalPlaces: 2,
 	confidenceIntervalLabel: '95% CI'
@@ -52,13 +52,13 @@ let settingsObj = {
 // id of the html node for chart
 let chartMountNodeIdStr = 'chartMount'
 
-let data = data_4
+let data = data_1
 
 Promise.all([data, lku]).then(function(values){
 
 	let dataObj = values[0]
 	let lku = values[1]
-	let compareStr = compareArr[5] // 'Age Groups'
+	let compareStr = compareArr[0]
 
 	// chart making function
 	makeChart(dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
