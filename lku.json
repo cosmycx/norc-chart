@@ -1,0 +1,2818 @@
+{
+    "AgeGroup": {
+      "AGEALL": {
+        "id": "AGEALL",
+        "name": "All Ages",
+        "sort": 1
+      },
+      "AGE017": {
+        "id": "AGE017",
+        "name": "0-17 years",
+        "sort": 3
+      },
+      "AGE1217": {
+        "id": "AGE1217",
+        "name": "12-17 years",
+        "sort": 4
+      },
+      "AGE1839": {
+        "id": "AGE1839",
+        "name": "18-39 years",
+        "sort": 5
+      },
+      "AGE2039": {
+        "id": "AGE2039",
+        "name": "20-39 years",
+        "sort": 6
+      },
+      "AGE4064": {
+        "id": "AGE4064",
+        "name": "40-64 years",
+        "sort": 7
+      },
+      "AGE6584": {
+        "id": "AGE6584",
+        "name": "65-84 years",
+        "sort": 8
+      },
+      "AGE85PLUS": {
+        "id": "AGE85PLUS",
+        "name": "85 years and older",
+        "sort": 9
+      },
+      "AGE0": {
+        "id": "AGE0",
+        "name": "Less than 12 Months",
+        "sort": 10
+      },
+      "AGE14": {
+        "id": "AGE14",
+        "name": "14 Years",
+        "sort": 44
+      },
+      "AGE59": {
+        "id": "AGE59",
+        "name": "5-9 years",
+        "sort": 132
+      },
+      "AGE1014": {
+        "id": "AGE1014",
+        "name": "10-14 years",
+        "sort": 133
+      },
+      "AGE1519": {
+        "id": "AGE1519",
+        "name": "15-19 years",
+        "sort": 134
+      },
+      "AGE2024": {
+        "id": "AGE2024",
+        "name": "20-24 years",
+        "sort": 135
+      },
+      "AGE2529": {
+        "id": "AGE2529",
+        "name": "25-29 years",
+        "sort": 136
+      },
+      "AGE3034": {
+        "id": "AGE3034",
+        "name": "30-34 years",
+        "sort": 137
+      },
+      "AGE3539": {
+        "id": "AGE3539",
+        "name": "35-39 years",
+        "sort": 138
+      },
+      "AGE4044": {
+        "id": "AGE4044",
+        "name": "40-44 years",
+        "sort": 139
+      },
+      "AGE4549": {
+        "id": "AGE4549",
+        "name": "45-49 years",
+        "sort": 140
+      },
+      "AGE5054": {
+        "id": "AGE5054",
+        "name": "50-54 years",
+        "sort": 141
+      },
+      "AGE5559": {
+        "id": "AGE5559",
+        "name": "55-59 years",
+        "sort": 142
+      },
+      "AGE6064": {
+        "id": "AGE6064",
+        "name": "60-64 years",
+        "sort": 143
+      },
+      "AGE6569": {
+        "id": "AGE6569",
+        "name": "65-69 years",
+        "sort": 144
+      },
+      "AGE7074": {
+        "id": "AGE7074",
+        "name": "70-74 years",
+        "sort": 145
+      },
+      "AGE7579": {
+        "id": "AGE7579",
+        "name": "75-79 years",
+        "sort": 146
+      },
+      "AGE8084": {
+        "id": "AGE8084",
+        "name": "80-84 years",
+        "sort": 147
+      },
+      "AGE8589": {
+        "id": "AGE8589",
+        "name": "85-89 years",
+        "sort": 154
+      },
+      "AGE9094": {
+        "id": "AGE9094",
+        "name": "90-94 years",
+        "sort": 149
+      },
+      "AGE9599": {
+        "id": "AGE9599",
+        "name": "95-99 years",
+        "sort": 150
+      },
+      "AGE1": {
+        "id": "AGE1",
+        "name": "1 Year Old",
+        "sort": 31
+      },
+      "AGE2": {
+        "id": "AGE2",
+        "name": "2 Years",
+        "sort": 32
+      },
+      "AGE3": {
+        "id": "AGE3",
+        "name": "3 Years",
+        "sort": 33
+      },
+      "AGE4": {
+        "id": "AGE4",
+        "name": "4 Years",
+        "sort": 34
+      },
+      "AGE5": {
+        "id": "AGE5",
+        "name": "5 Years",
+        "sort": 35
+      },
+      "AGE6": {
+        "id": "AGE6",
+        "name": "6 Years",
+        "sort": 36
+      },
+      "AGE7": {
+        "id": "AGE7",
+        "name": "7 Years",
+        "sort": 37
+      },
+      "AGE8": {
+        "id": "AGE8",
+        "name": "8 Years",
+        "sort": 38
+      },
+      "AGE9": {
+        "id": "AGE9",
+        "name": "9 Years",
+        "sort": 39
+      },
+      "AGE10": {
+        "id": "AGE10",
+        "name": "10 Years",
+        "sort": 40
+      },
+      "AGE11": {
+        "id": "AGE11",
+        "name": "11 Years",
+        "sort": 41
+      },
+      "AGE12": {
+        "id": "AGE12",
+        "name": "12 Years",
+        "sort": 42
+      },
+      "AGE13": {
+        "id": "AGE13",
+        "name": "13 Years",
+        "sort": 43
+      },
+      "AGE15": {
+        "id": "AGE15",
+        "name": "15 Years",
+        "sort": 45
+      },
+      "AGE16": {
+        "id": "AGE16",
+        "name": "16 Years",
+        "sort": 46
+      },
+      "AGE17": {
+        "id": "AGE17",
+        "name": "17 Years",
+        "sort": 47
+      },
+      "AGE18": {
+        "id": "AGE18",
+        "name": "18 Years",
+        "sort": 48
+      },
+      "AGE19": {
+        "id": "AGE19",
+        "name": "19 Years",
+        "sort": 49
+      },
+      "AGE20": {
+        "id": "AGE20",
+        "name": "20 Years",
+        "sort": 50
+      },
+      "AGE21": {
+        "id": "AGE21",
+        "name": "21 Years",
+        "sort": 51
+      },
+      "AGE22": {
+        "id": "AGE22",
+        "name": "22 Years",
+        "sort": 52
+      },
+      "AGE23": {
+        "id": "AGE23",
+        "name": "23 Years",
+        "sort": 53
+      },
+      "AGE24": {
+        "id": "AGE24",
+        "name": "24 Years",
+        "sort": 54
+      },
+      "AGE25": {
+        "id": "AGE25",
+        "name": "25 Years",
+        "sort": 55
+      },
+      "AGE26": {
+        "id": "AGE26",
+        "name": "26 Years",
+        "sort": 56
+      },
+      "AGE27": {
+        "id": "AGE27",
+        "name": "27 Years",
+        "sort": 57
+      },
+      "AGE28": {
+        "id": "AGE28",
+        "name": "28 Years",
+        "sort": 58
+      },
+      "AGE29": {
+        "id": "AGE29",
+        "name": "29 Years",
+        "sort": 59
+      },
+      "AGE30": {
+        "id": "AGE30",
+        "name": "30 Years",
+        "sort": 60
+      },
+      "AGE31": {
+        "id": "AGE31",
+        "name": "31 Years",
+        "sort": 61
+      },
+      "AGE32": {
+        "id": "AGE32",
+        "name": "32 Years",
+        "sort": 62
+      },
+      "AGE33": {
+        "id": "AGE33",
+        "name": "33 Years",
+        "sort": 63
+      },
+      "AGE34": {
+        "id": "AGE34",
+        "name": "34 Years",
+        "sort": 64
+      },
+      "AGE35": {
+        "id": "AGE35",
+        "name": "35 Years",
+        "sort": 65
+      },
+      "AGE36": {
+        "id": "AGE36",
+        "name": "36 Years",
+        "sort": 66
+      },
+      "AGE37": {
+        "id": "AGE37",
+        "name": "37 Years",
+        "sort": 67
+      },
+      "AGE38": {
+        "id": "AGE38",
+        "name": "38 Years",
+        "sort": 68
+      },
+      "AGE39": {
+        "id": "AGE39",
+        "name": "39 Years",
+        "sort": 69
+      },
+      "AGE40": {
+        "id": "AGE40",
+        "name": "40 Years",
+        "sort": 70
+      },
+      "AGE41": {
+        "id": "AGE41",
+        "name": "41 Years",
+        "sort": 71
+      },
+      "AGE42": {
+        "id": "AGE42",
+        "name": "42 Years",
+        "sort": 72
+      },
+      "AGE43": {
+        "id": "AGE43",
+        "name": "43 Years",
+        "sort": 73
+      },
+      "AGE44": {
+        "id": "AGE44",
+        "name": "44 Years",
+        "sort": 74
+      },
+      "AGE45": {
+        "id": "AGE45",
+        "name": "45 Years",
+        "sort": 75
+      },
+      "AGE46": {
+        "id": "AGE46",
+        "name": "46 Years",
+        "sort": 76
+      },
+      "AGE47": {
+        "id": "AGE47",
+        "name": "47 Years",
+        "sort": 77
+      },
+      "AGE48": {
+        "id": "AGE48",
+        "name": "48 Years",
+        "sort": 78
+      },
+      "AGE49": {
+        "id": "AGE49",
+        "name": "49 Years",
+        "sort": 79
+      },
+      "AGE50": {
+        "id": "AGE50",
+        "name": "50 Years",
+        "sort": 80
+      },
+      "AGE51": {
+        "id": "AGE51",
+        "name": "51 Years",
+        "sort": 81
+      },
+      "AGE52": {
+        "id": "AGE52",
+        "name": "52 Years",
+        "sort": 82
+      },
+      "AGE53": {
+        "id": "AGE53",
+        "name": "53 Years",
+        "sort": 83
+      },
+      "AGE54": {
+        "id": "AGE54",
+        "name": "54 Years",
+        "sort": 84
+      },
+      "AGE55": {
+        "id": "AGE55",
+        "name": "55 Years",
+        "sort": 85
+      },
+      "AGE56": {
+        "id": "AGE56",
+        "name": "56 Years",
+        "sort": 86
+      },
+      "AGE57": {
+        "id": "AGE57",
+        "name": "57 Years",
+        "sort": 87
+      },
+      "AGE58": {
+        "id": "AGE58",
+        "name": "58 Years",
+        "sort": 88
+      },
+      "AGE60": {
+        "id": "AGE60",
+        "name": "60 Years",
+        "sort": 90
+      },
+      "AGE61": {
+        "id": "AGE61",
+        "name": "61 Years",
+        "sort": 91
+      },
+      "AGE62": {
+        "id": "AGE62",
+        "name": "62 Years",
+        "sort": 92
+      },
+      "AGE63": {
+        "id": "AGE63",
+        "name": "63 Years",
+        "sort": 93
+      },
+      "AGE64": {
+        "id": "AGE64",
+        "name": "64 Years",
+        "sort": 94
+      },
+      "AGE65": {
+        "id": "AGE65",
+        "name": "65 Years",
+        "sort": 95
+      },
+      "AGE66": {
+        "id": "AGE66",
+        "name": "66 Years",
+        "sort": 96
+      },
+      "AGE67": {
+        "id": "AGE67",
+        "name": "67 Years",
+        "sort": 97
+      },
+      "AGE68": {
+        "id": "AGE68",
+        "name": "68 Years",
+        "sort": 98
+      },
+      "AGE69": {
+        "id": "AGE69",
+        "name": "69 Years",
+        "sort": 99
+      },
+      "AGE70": {
+        "id": "AGE70",
+        "name": "70 Years",
+        "sort": 100
+      },
+      "AGE71": {
+        "id": "AGE71",
+        "name": "71 Years",
+        "sort": 101
+      },
+      "AGE72": {
+        "id": "AGE72",
+        "name": "72 Years",
+        "sort": 102
+      },
+      "AGE73": {
+        "id": "AGE73",
+        "name": "73 Years",
+        "sort": 103
+      },
+      "AGE74": {
+        "id": "AGE74",
+        "name": "74 Years",
+        "sort": 104
+      },
+      "AGE75": {
+        "id": "AGE75",
+        "name": "75 Years",
+        "sort": 105
+      },
+      "AGE76": {
+        "id": "AGE76",
+        "name": "76 Years",
+        "sort": 106
+      },
+      "AGE77": {
+        "id": "AGE77",
+        "name": "77 Years",
+        "sort": 107
+      },
+      "AGE78": {
+        "id": "AGE78",
+        "name": "78 Years",
+        "sort": 108
+      },
+      "AGE79": {
+        "id": "AGE79",
+        "name": "79 Years",
+        "sort": 109
+      },
+      "AGE80": {
+        "id": "AGE80",
+        "name": "80 Years",
+        "sort": 110
+      },
+      "AGE81": {
+        "id": "AGE81",
+        "name": "81 Years",
+        "sort": 111
+      },
+      "AGE82": {
+        "id": "AGE82",
+        "name": "82 Years",
+        "sort": 112
+      },
+      "AGE83": {
+        "id": "AGE83",
+        "name": "83 Years",
+        "sort": 113
+      },
+      "AGE84": {
+        "id": "AGE84",
+        "name": "84 Years",
+        "sort": 114
+      },
+      "AGE85": {
+        "id": "AGE85",
+        "name": "85 Years",
+        "sort": 115
+      },
+      "AGE86": {
+        "id": "AGE86",
+        "name": "86 Years",
+        "sort": 116
+      },
+      "AGE87": {
+        "id": "AGE87",
+        "name": "87 Years",
+        "sort": 117
+      },
+      "AGE88": {
+        "id": "AGE88",
+        "name": "88 Years",
+        "sort": 118
+      },
+      "AGE89": {
+        "id": "AGE89",
+        "name": "89 Years",
+        "sort": 119
+      },
+      "AGE90": {
+        "id": "AGE90",
+        "name": "90 Years",
+        "sort": 120
+      },
+      "AGE91": {
+        "id": "AGE91",
+        "name": "91 Years",
+        "sort": 121
+      },
+      "AGE92": {
+        "id": "AGE92",
+        "name": "92 Years",
+        "sort": 122
+      },
+      "AGE93": {
+        "id": "AGE93",
+        "name": "93 Years",
+        "sort": 123
+      },
+      "AGE94": {
+        "id": "AGE94",
+        "name": "94 Years",
+        "sort": 124
+      },
+      "AGE95": {
+        "id": "AGE95",
+        "name": "95 Years",
+        "sort": 125
+      },
+      "AGE96": {
+        "id": "AGE96",
+        "name": "96 Years",
+        "sort": 126
+      },
+      "AGE97": {
+        "id": "AGE97",
+        "name": "97 Years",
+        "sort": 127
+      },
+      "AGE98": {
+        "id": "AGE98",
+        "name": "98 Years",
+        "sort": 128
+      },
+      "AGE100PLUS": {
+        "id": "AGE100PLUS",
+        "name": "100 years and older",
+        "sort": 129
+      },
+      "AGE99": {
+        "id": "AGE99",
+        "name": "99 Years",
+        "sort": 129
+      },
+      "AGE04": {
+        "id": "AGE04",
+        "name": "0-4 years",
+        "sort": 131
+      },
+      "AGE064": {
+        "id": "AGE064",
+        "name": "64 years or Less",
+        "sort": 151
+      },
+      "AGE6574": {
+        "id": "AGE6574",
+        "name": "65-74 years",
+        "sort": 152
+      },
+      "AGE7584": {
+        "id": "AGE7584",
+        "name": "75-84 years",
+        "sort": 153
+      },
+      "AGE90PLUS": {
+        "id": "AGE90PLUS",
+        "name": "90 years and older",
+        "sort": 155
+      },
+      "AGEUNK": {
+        "id": "AGEUNK",
+        "name": "Unknown age",
+        "sort": 160
+      }
+    },
+    "Category": {
+      "CAMD": {
+        "id": "CAMD",
+        "name": "Age Related Macular Degeneration",
+        "abbr": "Age Related Macular Degeneration",
+        "sort": 1
+      },
+      "CDXC3": {
+        "id": "CDXC3",
+        "name": "Age related macular degeneration",
+        "abbr": "Age related macular degeneration",
+        "sort": 2
+      },
+      "CBLIND": {
+        "id": "CBLIND",
+        "name": "Blind or difficulty seeing",
+        "abbr": "Blind or Difficulty Seeing",
+        "sort": 3
+      },
+      "CDXC8": {
+        "id": "CDXC8",
+        "name": "Blindness and low vision",
+        "abbr": "Blindness and low vision",
+        "sort": 4
+      },
+      "CDXC15": {
+        "id": "CDXC15",
+        "name": "Cancer and neoplasms of the eye",
+        "abbr": "Cancer and neoplasms of the eye",
+        "sort": 5
+      },
+      "CCATS": {
+        "id": "CCATS",
+        "name": "Cataract Surgery",
+        "abbr": "Cataract Surgery",
+        "sort": 6
+      },
+      "CCAT": {
+        "id": "CCAT",
+        "name": "Cataracts",
+        "abbr": "Cataracts",
+        "sort": 7
+      },
+      "CDXC6": {
+        "id": "CDXC6",
+        "name": "Cataracts",
+        "abbr": "Cataracts",
+        "sort": 8
+      },
+      "CDXC16": {
+        "id": "CDXC16",
+        "name": "Cornea disorders",
+        "abbr": "Cornea disorders",
+        "sort": 9
+      },
+      "CDXC2": {
+        "id": "CDXC2",
+        "name": "Diabetic eye diseases",
+        "abbr": "Diabetic Eye Diseases",
+        "sort": 10
+      },
+      "CDBR": {
+        "id": "CDBR",
+        "name": "Diabetic Retinopathy",
+        "abbr": "Diabetic Retinopathy",
+        "sort": 11
+      },
+      "CDIFGL": {
+        "id": "CDIFGL",
+        "name": "Difficulty seeing with glasses",
+        "abbr": "Difficulty Seeing with Glasses",
+        "sort": 12
+      },
+      "CDXC11": {
+        "id": "CDXC11",
+        "name": "Disorders of optic nerve and visual pathways",
+        "abbr": "Disorders of optic nerve and visual pathways",
+        "sort": 13
+      },
+      "CDXC7": {
+        "id": "CDXC7",
+        "name": "Disorders of refraction and accommodation",
+        "abbr": "Disorders of Refraction and accommodation",
+        "sort": 14
+      },
+      "CEXD": {
+        "id": "CEXD",
+        "name": "Exam with dilation",
+        "abbr": "Exam with dilation",
+        "sort": 15
+      },
+      "CEAMD": {
+        "id": "CEAMD",
+        "name": "Exam-based age related macular degeneration",
+        "abbr": "Exam-based age related macular degeneration",
+        "sort": 16
+      },
+      "CEDR": {
+        "id": "CEDR",
+        "name": "Exam-based diabetic retinopathy",
+        "abbr": "Exam-based diabetic retinopathy",
+        "sort": 17
+      },
+      "CEGL": {
+        "id": "CEGL",
+        "name": "Exam-based glaucoma",
+        "abbr": "Exam-based glaucoma",
+        "sort": 18
+      },
+      "CUTLEX": {
+        "id": "CUTLEX",
+        "name": "Eye exams",
+        "abbr": "Eye Exams",
+        "sort": 19
+      },
+      "CFS": {
+        "id": "CFS",
+        "name": "Far-sightedness",
+        "abbr": "Far-sightedness",
+        "sort": 20
+      },
+      "CDXC5": {
+        "id": "CDXC5",
+        "name": "Glaucoma",
+        "abbr": "Glaucoma",
+        "sort": 21
+      },
+      "CGLAUC": {
+        "id": "CGLAUC",
+        "name": "Glaucoma",
+        "abbr": "Glaucoma",
+        "sort": 22
+      },
+      "CDXC13": {
+        "id": "CDXC13",
+        "name": "Infectious and inflammatory diseases",
+        "abbr": "Infectious and Inflammatory diseases",
+        "sort": 23
+      },
+      "CDXC10": {
+        "id": "CDXC10",
+        "name": "Injury, burns and surgical complications of the eye",
+        "abbr": "Injury, burns and surgical complications of the eye",
+        "sort": 24
+      },
+      "CINSUR": {
+        "id": "CINSUR",
+        "name": "Insurance",
+        "abbr": "Insurance",
+        "sort": 25
+      },
+      "CNS": {
+        "id": "CNS",
+        "name": "Near-sightedness",
+        "abbr": "Near-sightedness",
+        "sort": 26
+      },
+      "CDXC14": {
+        "id": "CDXC14",
+        "name": "Orbital and external disease",
+        "abbr": "Orbital and external disease",
+        "sort": 27
+      },
+      "CDXC17": {
+        "id": "CDXC17",
+        "name": "Other eye disorders",
+        "abbr": "Other eye disorders",
+        "sort": 28
+      },
+      "CDXC4": {
+        "id": "CDXC4",
+        "name": "Other retinal disorders",
+        "abbr": "Other Retinal Disorders",
+        "sort": 29
+      },
+      "CDXC12": {
+        "id": "CDXC12",
+        "name": "Other visual disturbances",
+        "abbr": "Other visual disturbances",
+        "sort": 30
+      },
+      "CRECOR": {
+        "id": "CRECOR",
+        "name": "Refractive correction",
+        "abbr": "Refractive correction",
+        "sort": 31
+      },
+      "CDXC1": {
+        "id": "CDXC1",
+        "name": "Retinal detachment and defects",
+        "abbr": "Retinal Detachment and Defects",
+        "sort": 32
+      },
+      "CTAMD": {
+        "id": "CTAMD",
+        "name": "Self-report age related macular degeneration",
+        "abbr": "Self-report age related macular degeneration",
+        "sort": 33
+      },
+      "CTDR": {
+        "id": "CTDR",
+        "name": "Self-report diabetic retinopathy",
+        "abbr": "Self-report diabetic retinopathy",
+        "sort": 34
+      },
+      "CTGL": {
+        "id": "CTGL",
+        "name": "Self-report glaucoma",
+        "abbr": "Self-report glaucoma",
+        "sort": 35
+      },
+      "CDXC9": {
+        "id": "CDXC9",
+        "name": "Strabismus and amblyopia",
+        "abbr": "Strabismus and amblyopia",
+        "sort": 36
+      },
+      "CVC": {
+        "id": "CVC",
+        "name": "Vision correction",
+        "abbr": "Vision correction",
+        "sort": 37
+      },
+      "CVI": {
+        "id": "CVI",
+        "name": "Vision impairment",
+        "abbr": "Vision Impairment",
+        "sort": 38
+      },
+      "CVISAC": {
+        "id": "CVISAC",
+        "name": "Visual acuity",
+        "abbr": "Visual Acuity",
+        "sort": 39
+      }
+    },
+    "DataSource": {
+      "ACS": {
+        "id": "ACS",
+        "name": "ACS - American Community Survey",
+        "abbr": "ACS",
+        "sort": 1
+      },
+      "BRFSS": {
+        "id": "BRFSS",
+        "name": "BRFSS - Behavioral Risk Factors Surveillance System",
+        "abbr": "BRFSS",
+        "sort": 2
+      },
+      "MCBS": {
+        "id": "MCBS",
+        "name": "MCBS - Medicare Current Beneficiary Survey",
+        "abbr": "MCBS",
+        "sort": 3
+      },
+      "NHIS": {
+        "id": "NHIS",
+        "name": "NHIS - National Health Interview Survey",
+        "abbr": "NHIS",
+        "sort": 4
+      },
+      "NHANES": {
+        "id": "NHANES",
+        "name": "NHANES - National Health and Nutrition Examination Survey",
+        "abbr": "NHANES",
+        "sort": 5
+      },
+      "NSCH": {
+        "id": "NSCH",
+        "name": "NSCH - National Survey of Children’s Health",
+        "abbr": "NSCH",
+        "sort": 6
+      },
+      "MEDICARE": {
+        "id": "MEDICARE",
+        "name": "Medicare - Medicare Research Identifiable Files",
+        "abbr": "MEDICARE",
+        "sort": 7
+      },
+      "VSP": {
+        "id": "VSP",
+        "name": "VSP - Vision Service Plan",
+        "abbr": "VSP",
+        "sort": 8
+      },
+      "MAX": {
+        "id": "MAX",
+        "name": "MAX - Medicaid MAX",
+        "abbr": "MAX",
+        "sort": 9
+      },
+      "MARKETSCAN": {
+        "id": "MARKETSCAN",
+        "name": "MarketScan",
+        "abbr": "MARKETSCAN",
+        "sort": 10
+      },
+      "USU": {
+        "id": "USU",
+        "name": "USU - Uniformed Services University- Tricare and military claims",
+        "abbr": "USU",
+        "sort": 11
+      },
+      "IRIS": {
+        "id": "IRIS",
+        "name": "IRIS - Intelligent Research in Sight",
+        "abbr": "IRIS",
+        "sort": 12
+      }
+    },
+    "DataSourceType": {
+      "CLAIMS": {
+        "id": "CLAIMS",
+        "name": "Claims Database",
+        "abbr": "Claims",
+        "sort": 1
+      },
+      "EHR": {
+        "id": "EHR",
+        "name": "EHR Registry",
+        "abbr": "EHR Registry",
+        "sort": 2
+      },
+      "SURVEY": {
+        "id": "SURVEY",
+        "name": "Surveys",
+        "abbr": "Surveys",
+        "sort": 3
+      }
+    },
+    "DataValueType": {
+      "CRDPREV": {
+        "id": "CRDPREV",
+        "name": "Crude Prevalence",
+        "sort": 1
+      },
+      "AGEADJPREV": {
+        "id": "AGEADJPREV",
+        "name": "Age-Adjusted Prevalence",
+        "sort": 2
+      }
+    },
+    "Gender": {
+      "GALL": {
+        "id": "GALL",
+        "name": "Total",
+        "sort": 1
+      },
+      "GM": {
+        "id": "GM",
+        "name": "Male",
+        "sort": 2
+      },
+      "GF": {
+        "id": "GF",
+        "name": "Female",
+        "sort": 3
+      },
+      "GU": {
+        "id": "GU",
+        "name": "Unknown",
+        "sort": 4
+      }
+    },
+    "Location": {
+      "10": {
+        "id": "10",
+        "name": "Delaware",
+        "abbr": "DE",
+        "sort": 10
+      },
+      "11": {
+        "id": "11",
+        "name": "District Of Columbia",
+        "abbr": "DC",
+        "sort": 11
+      },
+      "12": {
+        "id": "12",
+        "name": "Florida",
+        "abbr": "FL",
+        "sort": 12
+      },
+      "13": {
+        "id": "13",
+        "name": "Georgia",
+        "abbr": "GA",
+        "sort": 13
+      },
+      "15": {
+        "id": "15",
+        "name": "Hawaii",
+        "abbr": "HI",
+        "sort": 15
+      },
+      "16": {
+        "id": "16",
+        "name": "Idaho",
+        "abbr": "ID",
+        "sort": 16
+      },
+      "17": {
+        "id": "17",
+        "name": "Illinois",
+        "abbr": "IL",
+        "sort": 17
+      },
+      "18": {
+        "id": "18",
+        "name": "Indiana",
+        "abbr": "IN",
+        "sort": 18
+      },
+      "19": {
+        "id": "19",
+        "name": "Iowa",
+        "abbr": "IA",
+        "sort": 19
+      },
+      "20": {
+        "id": "20",
+        "name": "Kansas",
+        "abbr": "KS",
+        "sort": 20
+      },
+      "21": {
+        "id": "21",
+        "name": "Kentucky",
+        "abbr": "KY",
+        "sort": 21
+      },
+      "22": {
+        "id": "22",
+        "name": "Louisiana",
+        "abbr": "LA",
+        "sort": 22
+      },
+      "23": {
+        "id": "23",
+        "name": "Maine",
+        "abbr": "ME",
+        "sort": 23
+      },
+      "24": {
+        "id": "24",
+        "name": "Maryland",
+        "abbr": "MD",
+        "sort": 25
+      },
+      "25": {
+        "id": "25",
+        "name": "Massachusetts",
+        "abbr": "MA",
+        "sort": 26
+      },
+      "26": {
+        "id": "26",
+        "name": "Michigan",
+        "abbr": "MI",
+        "sort": 27
+      },
+      "27": {
+        "id": "27",
+        "name": "Minnesota",
+        "abbr": "MN",
+        "sort": 28
+      },
+      "28": {
+        "id": "28",
+        "name": "Mississippi",
+        "abbr": "MS",
+        "sort": 29
+      },
+      "29": {
+        "id": "29",
+        "name": "Missouri",
+        "abbr": "MO",
+        "sort": 30
+      },
+      "30": {
+        "id": "30",
+        "name": "Montana",
+        "abbr": "MT",
+        "sort": 31
+      },
+      "31": {
+        "id": "31",
+        "name": "Nebraska",
+        "abbr": "NE",
+        "sort": 32
+      },
+      "32": {
+        "id": "32",
+        "name": "Nevada",
+        "abbr": "NV",
+        "sort": 33
+      },
+      "33": {
+        "id": "33",
+        "name": "New Hampshire",
+        "abbr": "NH",
+        "sort": 34
+      },
+      "34": {
+        "id": "34",
+        "name": "New Jersey",
+        "abbr": "NJ",
+        "sort": 35
+      },
+      "35": {
+        "id": "35",
+        "name": "New Mexico",
+        "abbr": "NM",
+        "sort": 36
+      },
+      "36": {
+        "id": "36",
+        "name": "New York",
+        "abbr": "NY",
+        "sort": 37
+      },
+      "37": {
+        "id": "37",
+        "name": "North Carolina",
+        "abbr": "NC",
+        "sort": 38
+      },
+      "38": {
+        "id": "38",
+        "name": "North Dakota",
+        "abbr": "ND",
+        "sort": 39
+      },
+      "39": {
+        "id": "39",
+        "name": "Ohio",
+        "abbr": "OH",
+        "sort": 41
+      },
+      "40": {
+        "id": "40",
+        "name": "Oklahoma",
+        "abbr": "OK",
+        "sort": 42
+      },
+      "41": {
+        "id": "41",
+        "name": "Oregon",
+        "abbr": "OR",
+        "sort": 43
+      },
+      "42": {
+        "id": "42",
+        "name": "Pennsylvania",
+        "abbr": "PA",
+        "sort": 45
+      },
+      "44": {
+        "id": "44",
+        "name": "Rhode Island",
+        "abbr": "RI",
+        "sort": 47
+      },
+      "45": {
+        "id": "45",
+        "name": "South Carolina",
+        "abbr": "SC",
+        "sort": 48
+      },
+      "46": {
+        "id": "46",
+        "name": "South Dakota",
+        "abbr": "SD",
+        "sort": 49
+      },
+      "47": {
+        "id": "47",
+        "name": "Tennessee",
+        "abbr": "TN",
+        "sort": 50
+      },
+      "48": {
+        "id": "48",
+        "name": "Texas",
+        "abbr": "TX",
+        "sort": 51
+      },
+      "49": {
+        "id": "49",
+        "name": "Utah",
+        "abbr": "UT",
+        "sort": 52
+      },
+      "50": {
+        "id": "50",
+        "name": "Vermont",
+        "abbr": "VT",
+        "sort": 53
+      },
+      "51": {
+        "id": "51",
+        "name": "Virginia",
+        "abbr": "VA",
+        "sort": 55
+      },
+      "53": {
+        "id": "53",
+        "name": "Washington",
+        "abbr": "WA",
+        "sort": 56
+      },
+      "54": {
+        "id": "54",
+        "name": "West Virginia",
+        "abbr": "WV",
+        "sort": 57
+      },
+      "55": {
+        "id": "55",
+        "name": "Wisconsin",
+        "abbr": "WI",
+        "sort": 58
+      },
+      "56": {
+        "id": "56",
+        "name": "Wyoming",
+        "abbr": "WY",
+        "sort": 59
+      },
+      "59": {
+        "id": "59",
+        "name": "National",
+        "abbr": "US",
+        "sort": 1
+      },
+      "60": {
+        "id": "60",
+        "name": "American Samoa",
+        "abbr": "AS",
+        "sort": 4
+      },
+      "66": {
+        "id": "66",
+        "name": "Guam",
+        "abbr": "GU",
+        "sort": 14
+      },
+      "68": {
+        "id": "68",
+        "name": "Marshall Islands",
+        "abbr": "MH",
+        "sort": 24
+      },
+      "69": {
+        "id": "69",
+        "name": "Northern Mariana Islands",
+        "abbr": "MP",
+        "sort": 40
+      },
+      "70": {
+        "id": "70",
+        "name": "Palau",
+        "abbr": "PW",
+        "sort": 44
+      },
+      "72": {
+        "id": "72",
+        "name": "Puerto Rico",
+        "abbr": "PR",
+        "sort": 46
+      },
+      "78": {
+        "id": "78",
+        "name": "U.S. Virgin Islands",
+        "abbr": "VI",
+        "sort": 54
+      },
+      "99": {
+        "id": "99",
+        "name": "Missing Location",
+        "abbr": "XX",
+        "sort": 60
+      },
+      "01": {
+        "id": "01",
+        "name": "Alabama",
+        "abbr": "AL",
+        "sort": 2
+      },
+      "02": {
+        "id": "02",
+        "name": "Alaska",
+        "abbr": "AK",
+        "sort": 3
+      },
+      "04": {
+        "id": "04",
+        "name": "Arizona",
+        "abbr": "AZ",
+        "sort": 5
+      },
+      "05": {
+        "id": "05",
+        "name": "Arkansas",
+        "abbr": "AR",
+        "sort": 6
+      },
+      "06": {
+        "id": "06",
+        "name": "California",
+        "abbr": "CA",
+        "sort": 7
+      },
+      "08": {
+        "id": "08",
+        "name": "Colorado",
+        "abbr": "CO",
+        "sort": 8
+      },
+      "09": {
+        "id": "09",
+        "name": "Connecticut",
+        "abbr": "CT",
+        "sort": 9
+      }
+    },
+    "Question": {
+      "QDXC3": {
+        "id": "QDXC3",
+        "name": "Annual treated prevalence of age related macular degeneration",
+        "abbr": "Annual treated prevalence of age related macular degeneration",
+        "sort": 1
+      },
+      "QDXC8": {
+        "id": "QDXC8",
+        "name": "Annual treated prevalence of blindness and low vision",
+        "abbr": "Annual treated prevalence of blindness and low vision",
+        "sort": 2
+      },
+      "QDXC15": {
+        "id": "QDXC15",
+        "name": "Annual treated prevalence of cancer and neoplasms of the eye",
+        "abbr": "Annual treated prevalence of cancer and neoplasms of the eye",
+        "sort": 3
+      },
+      "QDXC6": {
+        "id": "QDXC6",
+        "name": "Annual treated prevalence of cataracts",
+        "abbr": "Annual treated prevalence of cataracts",
+        "sort": 4
+      },
+      "QDXC16": {
+        "id": "QDXC16",
+        "name": "Annual treated prevalence of cornea disorders",
+        "abbr": "Annual treated prevalence of cornea disorders",
+        "sort": 5
+      },
+      "QDXC2": {
+        "id": "QDXC2",
+        "name": "Annual treated prevalence of diabetic eye diseases",
+        "abbr": "Annual treated prevalence of diabetic eye diseases",
+        "sort": 6
+      },
+      "QDXC11": {
+        "id": "QDXC11",
+        "name": "Annual treated prevalence of disorders of optic nerve and visual pathways",
+        "abbr": "Annual treated prevalence of disorders of optic nerve and visual pathways",
+        "sort": 7
+      },
+      "QDXC7": {
+        "id": "QDXC7",
+        "name": "Annual treated prevalence of disorders of refraction and accommodation",
+        "abbr": "Annual treated prevalence of disorders of refraction and accommodation",
+        "sort": 8
+      },
+      "QDXC5": {
+        "id": "QDXC5",
+        "name": "Annual treated prevalence of glaucoma",
+        "abbr": "Annual treated prevalence of glaucoma",
+        "sort": 9
+      },
+      "QDXC13": {
+        "id": "QDXC13",
+        "name": "Annual treated prevalence of infectious and inflammatory diseases",
+        "abbr": "Annual treated prevalence of infectious and inflammatory diseases",
+        "sort": 10
+      },
+      "QDXC10": {
+        "id": "QDXC10",
+        "name": "Annual treated prevalence of injury, burns and surgical complications of the eye",
+        "abbr": "Annual treated prevalence of injury, burns and surgical complications of the eye",
+        "sort": 11
+      },
+      "QDXC14": {
+        "id": "QDXC14",
+        "name": "Annual treated prevalence of orbital and external disease",
+        "abbr": "Annual treated prevalence of orbital and external disease",
+        "sort": 12
+      },
+      "QDXC17": {
+        "id": "QDXC17",
+        "name": "Annual treated prevalence of other eye disorders",
+        "abbr": "Annual treated prevalence of other eye disorders",
+        "sort": 13
+      },
+      "QDXC4": {
+        "id": "QDXC4",
+        "name": "Annual treated prevalence of other retinal disorders",
+        "abbr": "Annual treated prevalence of other retinal disorders",
+        "sort": 14
+      },
+      "QDXC12": {
+        "id": "QDXC12",
+        "name": "Annual treated prevalence of other visual disturbances",
+        "abbr": "Annual treated prevalence of other visual disturbances",
+        "sort": 15
+      },
+      "QDXC1": {
+        "id": "QDXC1",
+        "name": "Annual treated prevalence of retinal detachment and defects",
+        "abbr": "Annual treated prevalence of retinal detachment and defects",
+        "sort": 16
+      },
+      "QDXC9": {
+        "id": "QDXC9",
+        "name": "Annual treated prevalence of strabismus and amblyopia",
+        "abbr": "Annual treated prevalence of strabismus and amblyopia",
+        "sort": 17
+      },
+      "QVISA": {
+        "id": "QVISA",
+        "name": "Best-corrected visual acuity",
+        "abbr": "Best-corrected visual acuity",
+        "sort": 18
+      },
+      "ISBLA": {
+        "id": "ISBLA",
+        "name": "Percentage of adults who are blind or unable to see at all (NHIS Adult Module)",
+        "abbr": "Blind",
+        "sort": 19
+      },
+      "ISDGL1": {
+        "id": "ISDGL1",
+        "name": "Percentage of adults who have trouble seeing even when wearing glasses or contact lenses (NHIS Adult Module)",
+        "abbr": "Trouble seeing with glasses or contact lenses",
+        "sort": 20
+      },
+      "ISDGCH": {
+        "id": "ISDGCH",
+        "name": "Percentage of children have any trouble seeing even when wearing glasses or contact lenses (NHIS Child Module)",
+        "abbr": "Children who have trouble seeing with glasses or contact lenses",
+        "sort": 21
+      },
+      "ISBLCH": {
+        "id": "ISBLCH",
+        "name": "Percentage of children who are blind or unable to see at all (NHIS Child Module)",
+        "abbr": "Blind children",
+        "sort": 22
+      },
+      "CHVPGL": {
+        "id": "CHVPGL",
+        "name": "Percentage of children who were ever told by doctor that they had a vision problem that cannot be corrected with glasses or contact lenses",
+        "abbr": "Vision problems that can't be corrected with glasses or contact lenses-ever",
+        "sort": 23
+      },
+      "CHVPSV": {
+        "id": "CHVPSV",
+        "name": "Percentage of children who were ever told by doctor that they had a vision problem that cannot be corrected with glasses or contact lenses that currently have mild, moderate, or severe vision problems",
+        "abbr": "Mild, Moderate, or Severe Vision problems that can't be corrected with glasses or contact lenses",
+        "sort": 24
+      },
+      "CHVPC": {
+        "id": "CHVPC",
+        "name": "Percentage of children who were ever told by doctor that they had a vision problem that cannot be corrected with glasses or contact lenses that currently have vision problems",
+        "abbr": "Vision problems that can't be corrected with glasses or contact lenses-current",
+        "sort": 25
+      },
+      "ISDGL2": {
+        "id": "ISDGL2",
+        "name": "Percentage of people who have (no, some, a lot) difficulty seeing even when wearing glasses (NHIS Functioning and Disability Module)",
+        "abbr": "Difficult seeing with glasses",
+        "sort": 26
+      },
+      "ISGL": {
+        "id": "ISGL",
+        "name": "Percentage of people who wear glasses (NHIS Functioning and Disability Module)",
+        "abbr": "People who wear glasses",
+        "sort": 27
+      },
+      "QUTLEX": {
+        "id": "QUTLEX",
+        "name": "Proportion of patients who had an eye exam in selected year",
+        "abbr": "Annual examination rate",
+        "sort": 28
+      },
+      "ACSBL": {
+        "id": "ACSBL",
+        "name": "Percentage of people who are blind or have serious difficulty seeing even when wearing glasses",
+        "abbr": "Percentage of people who are blind or have serious difficulty seeing even when wearing glasses",
+        "sort": 29
+      },
+      "NHBL": {
+        "id": "NHBL",
+        "name": "Percentage of people blind in both eyes",
+        "abbr": "Blind in both eyes",
+        "sort": 30
+      },
+      "NHGLC": {
+        "id": "NHGLC",
+        "name": "Percentage of people ever told by an eye doctor they have glaucoma",
+        "abbr": "Diagnosed glaucoma",
+        "sort": 31
+      },
+      "NHOCAT": {
+        "id": "NHOCAT",
+        "name": "Percentage of people who had a cataract operation",
+        "abbr": "Cataract operation",
+        "sort": 32
+      },
+      "NHOCTE": {
+        "id": "NHOCTE",
+        "name": "Percentage of people who had cataract operation in right, left, or both eyes",
+        "abbr": "Cataract operation in right, left, or both eyes",
+        "sort": 33
+      },
+      "NHGCLR": {
+        "id": "NHGCLR",
+        "name": "Percentage of people who had glaucoma in their right, left, or both eyes",
+        "abbr": "Diagnosed glaucoma in right, left, or both eyes",
+        "sort": 34
+      },
+      "NHFS2": {
+        "id": "NHFS2",
+        "name": "Percentage of people who have (no, a little, moderate, or extreme) difficulty doing activities that require seeing well up close.",
+        "abbr": "Difficulty with close up activities",
+        "sort": 35
+      },
+      "NHFS1": {
+        "id": "NHFS1",
+        "name": "Percentage of people who have (no, a little, moderate, or extreme) difficulty reading ordinary print in newspapers",
+        "abbr": "Difficulty reading newspapers",
+        "sort": 36
+      },
+      "NHVPGL": {
+        "id": "NHVPGL",
+        "name": "Percentage of people who say their eyesight with glasses or contact lenses, is worn, is excellent, good, pair, poor, or very poor",
+        "abbr": "Eyesight ranking with glasses or contact lenses",
+        "sort": 37
+      },
+      "NHTDR": {
+        "id": "NHTDR",
+        "name": "Percentage of people who were ever told by an eye doctor their diabetes affected their eyes",
+        "abbr": "Percentage of people who were ever told by an eye doctor their diabetes affected their eyes",
+        "sort": 38
+      },
+      "NHAMD": {
+        "id": "NHAMD",
+        "name": "Percentage of people who were ever told by an eye doctor they have age-related macular degeneration",
+        "abbr": "Diagnosed age-related macular degeneration",
+        "sort": 39
+      },
+      "NHMDLR": {
+        "id": "NHMDLR",
+        "name": "Percentage of people with age-related macular degeneration in right, left, or both eyes",
+        "abbr": "Diagnosed age-related macular degeneration in right, left, or both eyes",
+        "sort": 40
+      },
+      "NHEAMD": {
+        "id": "NHEAMD",
+        "name": "Percentage of people with age-related macular degeneration, based on examination",
+        "sort": 41
+      },
+      "NHEDR": {
+        "id": "NHEDR",
+        "name": "Percentage of people with diabetic retinopathy, based on examination",
+        "abbr": "Percentage of people with diabetic retinopathy, based on examination",
+        "sort": 42
+      },
+      "NHEGL": {
+        "id": "NHEGL",
+        "name": "Percentage of people with glaucoma, based on examination",
+        "abbr": "Percentage of people with glaucoma, based on examination",
+        "sort": 43
+      },
+      "QPVISA": {
+        "id": "QPVISA",
+        "name": "Presenting visual acuity",
+        "abbr": "Presenting visual acuity",
+        "sort": 44
+      },
+      "QUVISA": {
+        "id": "QUVISA",
+        "name": "Uncorrected Refractive Error (URE)",
+        "abbr": "Uncorrected Refractive Error (URE)",
+        "sort": 45
+      },
+      "MCVPGL": {
+        "id": "MCVPGL",
+        "name": "Percentage of people who have (no trouble, a little, a lot of) trouble seeing while wearing glasses or contact lenses",
+        "abbr": "Trouble seeing with glasses or contact lenses",
+        "sort": 46
+      },
+      "MCBL": {
+        "id": "MCBL",
+        "name": "Percentage of people that have been told that they are legally blind",
+        "abbr": "Legally blind",
+        "sort": 47
+      },
+      "MCOCAT": {
+        "id": "MCOCAT",
+        "name": "Percentage of people who have ever had an operation for cataracts",
+        "abbr": "Cataract operation",
+        "sort": 48
+      },
+      "MCINSR": {
+        "id": "MCINSR",
+        "name": "Percentage of people who have optical coverage through a Medicare Managed Care Plan for eyeglasses or contact lenses",
+        "abbr": "Medicare Managed Care Plan for optical coverage",
+        "sort": 49
+      },
+      "MCAMD": {
+        "id": "MCAMD",
+        "name": "Percentage of people ever told by a doctor they have age-related macular degeneration",
+        "abbr": "Diagnosed age-related macular degeneration",
+        "sort": 50
+      },
+      "MCCAT": {
+        "id": "MCCAT",
+        "name": "Percentage of people told by a doctor they have cataracts",
+        "abbr": "Diagnosed cataracts",
+        "sort": 51
+      },
+      "MCDBR": {
+        "id": "MCDBR",
+        "name": "Percentage of people told by a doctor they have diabetic retinopathy",
+        "abbr": "Diagnosed diabetic retinopathy",
+        "sort": 52
+      },
+      "MCGLC": {
+        "id": "MCGLC",
+        "name": "Percentage of people told by a doctor they have glaucoma",
+        "abbr": "Diagnosed glaucoma",
+        "sort": 53
+      },
+      "ISFS1": {
+        "id": "ISFS1",
+        "name": "Percentage of adults who wear eyeglasses or contact lenses to read books or newspaper, write, or other things that require them to see well up close (NHIS Adult Module)",
+        "abbr": "Percentage of adults who wear eyeglasses or contact lenses to read books or newspaper, write, or other things that require them to see well up close (NHIS Adult Module)",
+        "sort": 54
+      },
+      "ISFS2": {
+        "id": "ISFS2",
+        "name": "Percentage of adults who even when wearing glasses or contact lenses find it (not at all, only a little, somewhat, or very) difficult to read ordinary print in newspapers (NHIS Adult Module)",
+        "abbr": "Percentage of adults who even when wearing glasses or contact lenses find it (not at all, only a little, somewhat, or very) difficult to read ordinary print in newspapers (NHIS Adult Module)",
+        "sort": 55
+      },
+      "ISFS3": {
+        "id": "ISFS3",
+        "name": "Percentage of adults who when wearing glasses or contact lenses find it (not at all, only a little, somewhat, or very) difficult to do work or hobbies that require them to see well up close (NHIS Adult Module)",
+        "abbr": "Percentage of adults who when wearing glasses or contact lenses find it (not at all, only a little, somewhat, or very) difficult to do work or hobbies that require them to see well up close (NHIS Adult Module)",
+        "sort": 56
+      },
+      "ISFSCH": {
+        "id": "ISFSCH",
+        "name": "Percentage of children who wear eyeglasses or contact lenses to read books, write, play hand-held games, or do other things that require them to see well up close (NHIS Child Module)",
+        "abbr": "Percentage of children who wear eyeglasses or contact lenses to read books, write, play hand-held games, or do other things that require them to see well up close (NHIS Child Module)",
+        "sort": 57
+      },
+      "ISNSA": {
+        "id": "ISNSA",
+        "name": "Percentage of adults who wear eyeglasses or contact lenses to drive, read road and street signs, watch TV, or see things in the distance (NHIS Adult Module)",
+        "abbr": "Percentage of adults who wear eyeglasses or contact lenses to drive, read road and street signs, watch TV, or see things in the distance (NHIS Adult Module)",
+        "sort": 58
+      },
+      "ISNSC1": {
+        "id": "ISNSC1",
+        "name": "Percentage of children who wear eyeglasses or contact lenses to read road and street signs, see the blackboard, play sports, watch TV, or see things in the distance (NHIS Child Module)",
+        "abbr": "Percentage of children who wear eyeglasses or contact lenses to read road and street signs, see the blackboard, play sports, watch TV, or see things in the distance (NHIS Child Module)",
+        "sort": 59
+      },
+      "ISNSC2": {
+        "id": "ISNSC2",
+        "name": "Percentage of children who can read the board from the back of the classroom (NHIS Child Module)",
+        "abbr": "Percentage of children who can read the board from the back of the classroom (NHIS Child Module)",
+        "sort": 60
+      },
+      "ISGLA": {
+        "id": "ISGLA",
+        "name": "Percentage of adults who currently wear eyeglasses or contact lenses (NHIS Adult Module)",
+        "abbr": "Percentage of adults who currently wear eyeglasses or contact lenses (NHIS Adult Module)",
+        "sort": 61
+      },
+      "ISGLCH": {
+        "id": "ISGLCH",
+        "name": "Percentage of children who wear eyeglasses or contact lenses (NHIS Child Module)",
+        "abbr": "Percentage of children who wear eyeglasses or contact lenses (NHIS Child Module)",
+        "sort": 62
+      },
+      "ISDBR": {
+        "id": "ISDBR",
+        "name": "Percentage of adults ever told by a doctor or other health professional they had diabetic retinopathy (NHIS Adult Module)",
+        "abbr": "Percentage of adults ever told by a doctor or other health professional they had diabetic retinopathy (NHIS Adult Module)",
+        "sort": 63
+      },
+      "ISCAT": {
+        "id": "ISCAT",
+        "name": "Percentage of adults ever told by a doctor or other health professional they had cataracts (NHIS Adult Module)",
+        "abbr": "Percentage of adults ever told by a doctor or other health professional they had cataracts (NHIS Adult Module)",
+        "sort": 64
+      },
+      "ISGLC": {
+        "id": "ISGLC",
+        "name": "Percentage of adults ever told by a doctor or other health professional they had glaucoma (NHIS Adult Module)",
+        "abbr": "Percentage of adults ever told by a doctor or other health professional they had glaucoma (NHIS Adult Module)",
+        "sort": 65
+      },
+      "ISAMD": {
+        "id": "ISAMD",
+        "name": "Percentage of adults ever told by a doctor or other health professional they had macular degeneration (NHIS Adult Module)",
+        "abbr": "Percentage of adults ever told by a doctor or other health professional they had macular degeneration (NHIS Adult Module)",
+        "sort": 66
+      },
+      "ISEXD": {
+        "id": "ISEXD",
+        "name": "Percentage of adults that had an eye exam in which the pupils were dilated less than 1 month, 1 year, 2 year, or 2+ years ago (NHIS Adult Module)",
+        "abbr": "Percentage of adults that had an eye exam in which the pupils were dilated less than 1 month, 1 year, 2 year, or 2+ years ago (NHIS Adult Module)",
+        "sort": 67
+      },
+      "ISOCAT": {
+        "id": "ISOCAT",
+        "name": "Percentage of adults who ever had cataract surgery (NHIS Adult Module)",
+        "abbr": "Percentage of adults who ever had cataract surgery (NHIS Adult Module)",
+        "sort": 68
+      }
+    },
+    "RaceEthnicity": {
+      "ALLRACE": {
+        "id": "ALLRACE",
+        "name": "All races",
+        "sort": 1
+      },
+      "ASN": {
+        "id": "ASN",
+        "name": "Asian",
+        "sort": 2
+      },
+      "BLK": {
+        "id": "BLK",
+        "name": "Black, non-Hispanic",
+        "sort": 3
+      },
+      "HISP": {
+        "id": "HISP",
+        "name": "Hispanic, any race",
+        "sort": 4
+      },
+      "AIAN": {
+        "id": "AIAN",
+        "name": "North American Native",
+        "sort": 5
+      },
+      "WHT": {
+        "id": "WHT",
+        "name": "White, non-Hispanic",
+        "sort": 6
+      },
+      "OTH": {
+        "id": "OTH",
+        "name": "Other",
+        "sort": 7
+      },
+      "UNK": {
+        "id": "UNK",
+        "name": "Unknown",
+        "sort": 8
+      },
+      "NONE": {
+        "id": "NONE",
+        "name": "None given or missing",
+        "sort": 9
+      }
+    },
+    "Response": {
+      "R1_ALL": {
+        "id": "R1_ALL",
+        "name": "All Retinal detachment and defects",
+        "sort": 1
+      },
+      "R10_ALL": {
+        "id": "R10_ALL",
+        "name": "All Injury, burns and surgical complications of the eye",
+        "sort": 1
+      },
+      "R11_ALL": {
+        "id": "R11_ALL",
+        "name": "All Disorders of optic nerve and visual pathways",
+        "sort": 1
+      },
+      "R12_ALL": {
+        "id": "R12_ALL",
+        "name": "All Other visual disturbances",
+        "sort": 1
+      },
+      "R13_ALL": {
+        "id": "R13_ALL",
+        "name": "All Infectious and inflammatory diseases",
+        "sort": 1
+      },
+      "R14_ALL": {
+        "id": "R14_ALL",
+        "name": "All Orbital and external disease diseases",
+        "sort": 1
+      },
+      "R15_ALL": {
+        "id": "R15_ALL",
+        "name": "All Cancer and neoplasms of the eye diseases",
+        "sort": 1
+      },
+      "R16_ALL": {
+        "id": "R16_ALL",
+        "name": "All Cornea disorders",
+        "sort": 1
+      },
+      "R17_ALL": {
+        "id": "R17_ALL",
+        "name": "All Other eye disorders",
+        "sort": 1
+      },
+      "R2_ALL": {
+        "id": "R2_ALL",
+        "name": "All Diabetic eye diseases",
+        "sort": 1
+      },
+      "R3_ALL": {
+        "id": "R3_ALL",
+        "name": "All Age related macular degeneration",
+        "sort": 1
+      },
+      "R4_ALL": {
+        "id": "R4_ALL",
+        "name": "All Other retinal disorders",
+        "sort": 1
+      },
+      "R5_ALL": {
+        "id": "R5_ALL",
+        "name": "All Glaucoma",
+        "sort": 1
+      },
+      "R6_ALL": {
+        "id": "R6_ALL",
+        "name": "All Cataracts",
+        "sort": 1
+      },
+      "R7_ALL": {
+        "id": "R7_ALL",
+        "name": "All Refraction and accommodation",
+        "sort": 1
+      },
+      "R8_ALL": {
+        "id": "R8_ALL",
+        "name": "All Blindness and low vision",
+        "sort": 1
+      },
+      "R9_ALL": {
+        "id": "R9_ALL",
+        "name": "All Strabismus and amblyopia",
+        "sort": 1
+      },
+      "R2_4": {
+        "id": "R2_4",
+        "name": "Diabetic macular edema",
+        "sort": 2
+      },
+      "R2_1": {
+        "id": "R2_1",
+        "name": "Early/mild",
+        "sort": 3
+      },
+      "R2_2": {
+        "id": "R2_2",
+        "name": "Moderate/Severe non-proliferative ",
+        "sort": 4
+      },
+      "R2_3": {
+        "id": "R2_3",
+        "name": "Proliferative ",
+        "sort": 5
+      },
+      "R2_5": {
+        "id": "R2_5",
+        "name": "Other diabetes related ",
+        "sort": 6
+      },
+      "R3_4CNV": {
+        "id": "R3_4CNV",
+        "name": "Choroidal neovascularization",
+        "sort": 7
+      },
+      "R3_3": {
+        "id": "R3_3",
+        "name": "Dry-form ",
+        "sort": 8
+      },
+      "R3_2": {
+        "id": "R3_2",
+        "name": "Early ",
+        "sort": 9
+      },
+      "R3_3GA": {
+        "id": "R3_3GA",
+        "name": "Geographic atrophy",
+        "sort": 10
+      },
+      "R3_4": {
+        "id": "R3_4",
+        "name": "Wet-form",
+        "sort": 99
+      },
+      "R3_1": {
+        "id": "R3_1",
+        "name": "Unspecified",
+        "sort": 12
+      },
+      "R4_5": {
+        "id": "R4_5",
+        "name": "Branch retinal artery occlusion",
+        "sort": 13
+      },
+      "R4_3": {
+        "id": "R4_3",
+        "name": "Branch retinal vein occlusion",
+        "sort": 14
+      },
+      "R4_4": {
+        "id": "R4_4",
+        "name": "Central retinal arterial occlusion",
+        "sort": 15
+      },
+      "R4_2": {
+        "id": "R4_2",
+        "name": "Central retinal vein occlusion",
+        "sort": 16
+      },
+      "R4_8": {
+        "id": "R4_8",
+        "name": "Hereditary chorioretinal dystrophy",
+        "sort": 17
+      },
+      "R4_7": {
+        "id": "R4_7",
+        "name": "Macular edema (not diabetic)",
+        "sort": 18
+      },
+      "R4_9": {
+        "id": "R4_9",
+        "name": "Myopic degeneration",
+        "sort": 19
+      },
+      "R4_6": {
+        "id": "R4_6",
+        "name": "Non-Occlusive",
+        "sort": 20
+      },
+      "R4_1": {
+        "id": "R4_1",
+        "name": "Retina vascular disease, Occlusive",
+        "sort": 21
+      },
+      "R4_10": {
+        "id": "R4_10",
+        "name": "Other/unspecified other retinal disorders",
+        "sort": 22
+      },
+      "R5_7": {
+        "id": "R5_7",
+        "name": "Congenital ",
+        "sort": 23
+      },
+      "R5_4": {
+        "id": "R5_4",
+        "name": "Glaucoma suspect",
+        "sort": 24
+      },
+      "R5_3": {
+        "id": "R5_3",
+        "name": "Low-tension ",
+        "sort": 25
+      },
+      "R5_6": {
+        "id": "R5_6",
+        "name": "Narrow-angle ",
+        "sort": 26
+      },
+      "R5_8": {
+        "id": "R5_8",
+        "name": "Neovascular ",
+        "sort": 27
+      },
+      "R5_1": {
+        "id": "R5_1",
+        "name": "Open-angle ",
+        "sort": 28
+      },
+      "R5_5": {
+        "id": "R5_5",
+        "name": "Primary angle-closure ",
+        "sort": 29
+      },
+      "R5_2": {
+        "id": "R5_2",
+        "name": "Primary open-angle ",
+        "sort": 30
+      },
+      "R5_XS": {
+        "id": "R5_XS",
+        "name": "Severe stage",
+        "sort": 31
+      },
+      "R5_9": {
+        "id": "R5_9",
+        "name": "Other/unspecified glaucoma",
+        "sort": 32
+      },
+      "R6_6": {
+        "id": "R6_6",
+        "name": "Aphakia and disorders of lens",
+        "sort": 33
+      },
+      "R6_3": {
+        "id": "R6_3",
+        "name": "Congenital Cataract",
+        "sort": 34
+      },
+      "R6_2": {
+        "id": "R6_2",
+        "name": "Non-congenital cataract",
+        "sort": 35
+      },
+      "R6_4": {
+        "id": "R6_4",
+        "name": "Posterior capsular opacity",
+        "sort": 36
+      },
+      "R6_5": {
+        "id": "R6_5",
+        "name": "Pseudophakia",
+        "sort": 37
+      },
+      "R6_1": {
+        "id": "R6_1",
+        "name": "Senile cataract",
+        "sort": 38
+      },
+      "R7_3": {
+        "id": "R7_3",
+        "name": "Astigmatism",
+        "sort": 39
+      },
+      "R7_2": {
+        "id": "R7_2",
+        "name": "Hypermetropia",
+        "sort": 40
+      },
+      "R7_1": {
+        "id": "R7_1",
+        "name": "Myopia",
+        "sort": 41
+      },
+      "R7_4": {
+        "id": "R7_4",
+        "name": "Presbyopia",
+        "sort": 42
+      },
+      "R7_5": {
+        "id": "R7_5",
+        "name": "Other",
+        "sort": 43
+      },
+      "R8_5": {
+        "id": "R8_5",
+        "name": "Moderate bilateral impairment",
+        "sort": 44
+      },
+      "R8_4": {
+        "id": "R8_4",
+        "name": "Moderate imp. better eye, profound imp. lesser eye",
+        "sort": 45
+      },
+      "R8_6": {
+        "id": "R8_6",
+        "name": "Profound bilateral imp., legal blindness",
+        "sort": 46
+      },
+      "R8_2": {
+        "id": "R8_2",
+        "name": "Unqualified in one eye, or unspecified",
+        "sort": 47
+      },
+      "R8_1": {
+        "id": "R8_1",
+        "name": "Unqualified, both eyes",
+        "sort": 48
+      },
+      "R8_3": {
+        "id": "R8_3",
+        "name": "Vision impairment one eye",
+        "sort": 49
+      },
+      "R9_2": {
+        "id": "R9_2",
+        "name": "Amblyopia",
+        "sort": 50
+      },
+      "R9_1": {
+        "id": "R9_1",
+        "name": "Strabismus",
+        "sort": 51
+      },
+      "R10_2": {
+        "id": "R10_2",
+        "name": "Burn",
+        "sort": 52
+      },
+      "R10_1": {
+        "id": "R10_1",
+        "name": "Injury",
+        "sort": 53
+      },
+      "R10_3": {
+        "id": "R10_3",
+        "name": "Surgical complication",
+        "sort": 54
+      },
+      "R11_1": {
+        "id": "R11_1",
+        "name": "Optic nerve disorders",
+        "sort": 55
+      },
+      "R11_2": {
+        "id": "R11_2",
+        "name": "Visual pathway disorders",
+        "sort": 56
+      },
+      "R12_2": {
+        "id": "R12_2",
+        "name": "Color blindness",
+        "sort": 57
+      },
+      "R12_3": {
+        "id": "R12_3",
+        "name": "Night blindness",
+        "sort": 58
+      },
+      "R12_1": {
+        "id": "R12_1",
+        "name": "Visual field defect",
+        "sort": 59
+      },
+      "R12_4": {
+        "id": "R12_4",
+        "name": "Other/unspecified visual disturbances",
+        "sort": 60
+      },
+      "R13_3": {
+        "id": "R13_3",
+        "name": "Conjunctivitis",
+        "sort": 61
+      },
+      "R13_7": {
+        "id": "R13_7",
+        "name": "Endophthalmitis",
+        "sort": 62
+      },
+      "R13_4": {
+        "id": "R13_4",
+        "name": "Eyelid disorders",
+        "sort": 63
+      },
+      "R13_1": {
+        "id": "R13_1",
+        "name": "Infectious diseases",
+        "sort": 64
+      },
+      "R13_2": {
+        "id": "R13_2",
+        "name": "Keratitis",
+        "sort": 65
+      },
+      "R13_6": {
+        "id": "R13_6",
+        "name": "Lacrimal and orbit inflammation",
+        "sort": 66
+      },
+      "R13_5": {
+        "id": "R13_5",
+        "name": "Other/unspecified infectious and inflammatory diseases",
+        "sort": 67
+      },
+      "R14_1": {
+        "id": "R14_1",
+        "name": "Congenital anomalies",
+        "sort": 68
+      },
+      "R14_6": {
+        "id": "R14_6",
+        "name": "Disorders of the globe",
+        "sort": 69
+      },
+      "R14_5": {
+        "id": "R14_5",
+        "name": "Dry eye syndrome",
+        "sort": 70
+      },
+      "R14_3": {
+        "id": "R14_3",
+        "name": "Lacrimal diseases",
+        "sort": 71
+      },
+      "R14_2": {
+        "id": "R14_2",
+        "name": "Other/unspecified orbital and external disease diseases",
+        "sort": 72
+      },
+      "R15_2": {
+        "id": "R15_2",
+        "name": "Benign neoplasm ",
+        "sort": 73
+      },
+      "R15_1": {
+        "id": "R15_1",
+        "name": "Malignant neoplasm ",
+        "sort": 74
+      },
+      "R16_2": {
+        "id": "R16_2",
+        "name": "Endothelial dystrophy (Fuchs)",
+        "sort": 75
+      },
+      "R16_1": {
+        "id": "R16_1",
+        "name": "Keratoconus",
+        "sort": 76
+      },
+      "R16_3": {
+        "id": "R16_3",
+        "name": "Other corneal disorders",
+        "sort": 77
+      },
+      "REXANY": {
+        "id": "REXANY",
+        "name": "By any provider type",
+        "sort": 78
+      },
+      "REXPHS": {
+        "id": "REXPHS",
+        "name": "By an ophthalmologists or other physician",
+        "sort": 79
+      },
+      "REXOPT": {
+        "id": "REXOPT",
+        "name": "By an optometrist or optician",
+        "sort": 80
+      },
+      "RVNORM": {
+        "id": "RVNORM",
+        "name": "Normal Vision",
+        "sort": 81
+      },
+      "RVANY": {
+        "id": "RVANY",
+        "name": "Any Vision Loss (20/32 better eye)",
+        "sort": 82
+      },
+      "RVUSB": {
+        "id": "RVUSB",
+        "name": "US Blind (20/200 better eye)",
+        "sort": 83
+      },
+      "RVWB": {
+        "id": "RVWB",
+        "name": "WHO Blind (20/400 better eye)",
+        "sort": 84
+      },
+      "RVMON": {
+        "id": "RVMON",
+        "name": "Monocular vision loss (20/70 in either eye)",
+        "sort": 85
+      },
+      "RMILD": {
+        "id": "RMILD",
+        "name": "Mild",
+        "sort": 86
+      },
+      "RMOD": {
+        "id": "RMOD",
+        "name": "Moderate",
+        "sort": 87
+      },
+      "RSEV": {
+        "id": "RSEV",
+        "name": "Severe",
+        "sort": 88
+      },
+      "RND": {
+        "id": "RND",
+        "name": "No difficulty",
+        "sort": 89
+      },
+      "RSD": {
+        "id": "RSD",
+        "name": "Some difficulty",
+        "sort": 90
+      },
+      "RLOTD": {
+        "id": "RLOTD",
+        "name": "A lot of difficulty",
+        "sort": 91
+      },
+      "RUNA": {
+        "id": "RUNA",
+        "name": "Cannot do/Unable to do",
+        "sort": 92
+      },
+      "RYES": {
+        "id": "RYES",
+        "name": "Yes",
+        "sort": 93
+      },
+      "RNO": {
+        "id": "RNO",
+        "name": "No",
+        "sort": 94
+      },
+      "RNASC": {
+        "id": "RNASC",
+        "name": "Not ascertained",
+        "sort": 95
+      },
+      "RDK": {
+        "id": "RDK",
+        "name": "Don't Know",
+        "sort": 96
+      },
+      "RRF": {
+        "id": "RRF",
+        "name": "Refused",
+        "sort": 97
+      },
+      "R_NA": {
+        "id": "R_NA",
+        "name": "#N/A",
+        "sort": 98
+      },
+      "R14_4": {
+        "id": "R14_4",
+        "name": "Eyelid disorders",
+        "sort": 99
+      },
+      "RREM": {
+        "id": "RREM",
+        "name": "Removed",
+        "sort": 99
+      },
+      "RVPANY": {
+        "id": "RVPANY",
+        "name": "Presenting any vision loss (?20/32 in better eye)",
+        "sort": 99
+      },
+      "RVPIMP": {
+        "id": "RVPIMP",
+        "name": "Presenting visual impairment (20/32 - 20/160 in better eye)",
+        "sort": 99
+      },
+      "RVPMIL": {
+        "id": "RVPMIL",
+        "name": "Presenting visual impairment (20/32 - 20/63 in better eye)",
+        "sort": 99
+      },
+      "RVPMISS": {
+        "id": "RVPMISS",
+        "name": "Missing presenting acuity",
+        "sort": 99
+      },
+      "RVPMOD": {
+        "id": "RVPMOD",
+        "name": "Presenting visual impairment (20/70 - 20/160 in better eye)",
+        "sort": 99
+      },
+      "RVPMON": {
+        "id": "RVPMON",
+        "name": "Presenting monocular vision loss (?20/70 in either eye)",
+        "sort": 99
+      },
+      "RVPNOR": {
+        "id": "RVPNOR",
+        "name": "Presenting normal vision",
+        "sort": 99
+      },
+      "RVPUSB": {
+        "id": "RVPUSB",
+        "name": "Presenting US blind (?20/200 in better eye)",
+        "sort": 99
+      },
+      "RE": {
+        "id": "RE",
+        "name": "Excellent",
+        "sort": 100
+      },
+      "RRE": {
+        "id": "RRE",
+        "name": "Right eye",
+        "sort": 101
+      },
+      "RLE": {
+        "id": "RLE",
+        "name": "Left eye",
+        "sort": 102
+      },
+      "RBOTH": {
+        "id": "RBOTH",
+        "name": "Both",
+        "sort": 103
+      },
+      "R1M": {
+        "id": "R1M",
+        "name": "Less than 1 month",
+        "sort": 104
+      },
+      "R2MY": {
+        "id": "R2MY",
+        "name": "2 or more years ago",
+        "sort": 105
+      },
+      "R2PLUS": {
+        "id": "R2PLUS",
+        "name": "More than two years",
+        "sort": 106
+      },
+      "RALD": {
+        "id": "RALD",
+        "name": "A little difficulty",
+        "sort": 107
+      },
+      "RPM": {
+        "id": "RPM",
+        "name": "Within past month",
+        "sort": 107
+      },
+      "RPY": {
+        "id": "RPY",
+        "name": "Within past year",
+        "sort": 108
+      },
+      "R2Y": {
+        "id": "R2Y",
+        "name": "Within past 2 years",
+        "sort": 109
+      },
+      "RNTS": {
+        "id": "RNTS",
+        "name": "No trouble seeing",
+        "sort": 110
+      },
+      "RALTS": {
+        "id": "RALTS",
+        "name": "A little trouble seeing",
+        "sort": 111
+      },
+      "RALOTS": {
+        "id": "RALOTS",
+        "name": "A lot of trouble seeing",
+        "sort": 112
+      },
+      "RED": {
+        "id": "RED",
+        "name": "Extremely difficult",
+        "sort": 113
+      },
+      "RNUSV": {
+        "id": "RNUSV",
+        "name": "No usable vision",
+        "sort": 113
+      },
+      "RCNTE": {
+        "id": "RCNTE",
+        "name": "Can't do at all because of eyesight",
+        "sort": 114
+      },
+      "RDTOR": {
+        "id": "RDTOR",
+        "name": "Do not do this activity for other reasons",
+        "sort": 115
+      },
+      "RF": {
+        "id": "RF",
+        "name": "Fair",
+        "sort": 116
+      },
+      "RMD": {
+        "id": "RMD",
+        "name": "Moderate difficulty",
+        "sort": 116
+      },
+      "RG": {
+        "id": "RG",
+        "name": "Good",
+        "sort": 117
+      },
+      "RNEV": {
+        "id": "RNEV",
+        "name": "Never",
+        "sort": 118
+      },
+      "RP": {
+        "id": "RP",
+        "name": "Poor",
+        "sort": 119
+      },
+      "RVP": {
+        "id": "RVP",
+        "name": "Very poor",
+        "sort": 120
+      },
+      "RNOTD": {
+        "id": "RNOTD",
+        "name": "Not at all difficult",
+        "sort": 121
+      },
+      "ROALD": {
+        "id": "ROALD",
+        "name": "Only a little difficult",
+        "sort": 122
+      },
+      "RSWD": {
+        "id": "RSWD",
+        "name": "Somewhat difficult",
+        "sort": 123
+      },
+      "RVD": {
+        "id": "RVD",
+        "name": "Very difficult",
+        "sort": 124
+      },
+      "RVIMIL": {
+        "id": "RVIMIL",
+        "name": "Visual impairment (20/32 - 20/63 in better eye)",
+        "sort": 125
+      },
+      "RUNE": {
+        "id": "RUNE",
+        "name": "Unable to do because of eyesight",
+        "sort": 126
+      },
+      "RVIMOD": {
+        "id": "RVIMOD",
+        "name": "Visual impairment (20/70 - 20/160 in better eye)",
+        "sort": 126
+      },
+      "RUNR": {
+        "id": "RUNR",
+        "name": "Unable to do for other reasons",
+        "sort": 127
+      },
+      "RVIMP": {
+        "id": "RVIMP",
+        "name": "Visual impairment (20/32 - 20/160 in better eye)",
+        "sort": 127
+      },
+      "RVMISS": {
+        "id": "RVMISS",
+        "name": "Missing acuity",
+        "sort": 128
+      },
+      "RVURE": {
+        "id": "RVURE",
+        "name": "Uncorrected Refractive Error",
+        "sort": 129
+      }
+    },
+    "RiskFactor": {
+      "RFALL": {
+        "id": "RFALL",
+        "name": "All patients",
+        "sort": 1
+      },
+      "RFAPAR": {
+        "id": "RFAPAR",
+        "name": "All participants",
+        "sort": 2
+      },
+      "RFDM": {
+        "id": "RFDM",
+        "name": "Diabetes",
+        "sort": 3
+      },
+      "RFHT": {
+        "id": "RFHT",
+        "name": "Hypertension",
+        "sort": 4
+      },
+      "RFSM": {
+        "id": "RFSM",
+        "name": "Smoking",
+        "sort": 5
+      },
+      "RFNR": {
+        "id": "RFNR",
+        "name": "No Risk Factors",
+        "sort": 6
+      }
+    },
+    "RiskFactorResponse": {
+      "RFTOT": {
+        "id": "RFTOT",
+        "name": "Total",
+        "sort": 1
+      },
+      "RFYES": {
+        "id": "RFYES",
+        "name": "Yes",
+        "sort": 2
+      },
+      "RFNO": {
+        "id": "RFNO",
+        "name": "No",
+        "sort": 3
+      },
+      "RFNEVER": {
+        "id": "RFNEVER",
+        "name": "Never",
+        "sort": 4
+      },
+      "RFCURR": {
+        "id": "RFCURR",
+        "name": "Current",
+        "sort": 5
+      },
+      "RFFORM": {
+        "id": "RFFORM",
+        "name": "Former",
+        "sort": 6
+      },
+      "RFBD": {
+        "id": "RFBD",
+        "name": "Borderline",
+        "sort": 7
+      },
+      "RFALLPAR2": {
+        "id": "RFALLPAR2",
+        "name": "All participants",
+        "sort": 8
+      },
+      "RFALL": {
+        "id": "RFALL",
+        "name": "All patients",
+        "sort": 9
+      },
+      "RFREF": {
+        "id": "RFREF",
+        "name": "Refused",
+        "sort": 10
+      },
+      "RFDK": {
+        "id": "RFDK",
+        "name": "Don't know",
+        "sort": 11
+      },
+      "RFUNK": {
+        "id": "RFUNK",
+        "name": "Unknown",
+        "sort": 12
+      }
+    },
+    "Topic": {
+      "TDX": {
+        "id": "TDX",
+        "name": "Medical diagnoses",
+        "abbr": "Medical Diagnoses",
+        "sort": 1
+      },
+      "TVIS": {
+        "id": "TVIS",
+        "name": "Visual acuity measures",
+        "abbr": "Visual Acuity Measures",
+        "sort": 2
+      },
+      "TUTL": {
+        "id": "TUTL",
+        "name": "Service utilization",
+        "abbr": "Service Utilization",
+        "sort": 3
+      },
+      "TEXAM": {
+        "id": "TEXAM",
+        "name": "Examination Measures",
+        "abbr": "Examination Measures",
+        "sort": 4
+      },
+      "TCOND": {
+        "id": "TCOND",
+        "name": "Eye Health Conditions",
+        "abbr": "Eye Health Conditions",
+        "sort": 5
+      },
+      "TINS": {
+        "id": "TINS",
+        "name": "Insurance and Costs",
+        "abbr": "Insurance and Costs",
+        "sort": 6
+      },
+      "TVFUNC": {
+        "id": "TVFUNC",
+        "name": "Visual function",
+        "abbr": "Visual Function",
+        "sort": 7
+      }
+    },
+    "Year": {
+      "YR1": {
+        "id": "YR1",
+        "name": "2005-2008",
+        "sort": 1
+      },
+      "YR2": {
+        "id": "YR2",
+        "name": "2007-2012",
+        "sort": 2
+      },
+      "YR3": {
+        "id": "YR3",
+        "name": "2014",
+        "sort": 3
+      },
+      "YR4": {
+        "id": "YR4",
+        "name": "2014-2015",
+        "sort": 4
+      },
+      "YR5": {
+        "id": "YR5",
+        "name": "2015",
+        "sort": 5
+      },
+      "YR6": {
+        "id": "YR6",
+        "name": "2016",
+        "sort": 6
+      }
+    }
+  }
