@@ -195,8 +195,11 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 	let maxDv = d3.max(dataObj, function(d){ return parseFloat(d.dv) })
 	let maxHoriz = Math.max(maxHci, maxDv)
 
+  let scaleExtend = 1
+  if (maxHoriz < 1) { scaleExtend = 0.1 }
+
 	var xScale = d3.scaleLinear()
-									.domain([0, maxHoriz + 1])
+									.domain([0, maxHoriz + scaleExtend])
 									.range([0, barSvgWidth])
 
   let statesSpacingFactor = 3
@@ -260,15 +263,28 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 
   // grid vertical lines
   let maxForGridLines = 15
+  let minForGridLines = 1
+
   let gridAdjust = 1
   if (maxHoriz + 1 > maxForGridLines) { gridAdjust = 5 }
 
 	let gridArr = [], i = 0
 
-	while (i < maxHoriz + gridAdjust) {
-		gridArr.push(i)
-		i++
-	}
+  if (maxHoriz < minForGridLines) {  // microscale
+    gridAdjust = 0.1
+
+    while (i < maxHoriz + gridAdjust) {
+      gridArr.push(i)
+      i = i + gridAdjust
+    }
+
+  } else {
+    while (i < maxHoriz + gridAdjust) {
+      gridArr.push(i)
+      i++
+    }
+  }
+
 
 	svgChart.selectAll('vertGridLines')
 		.data(gridArr)
@@ -290,7 +306,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
         if (maxHoriz + 1 < maxForGridLines) {
 
           if ( compareStr !== compareStrOverall ) { return spaceAtTop - stateBarMargin/2 }
-          return spaceAtTop + stateBarMargin/2 
+          return spaceAtTop + stateBarMargin/2
         }
         if (index % 5 === 0) { return spaceAtTop - stateBarMargin/2 }
       })
@@ -311,6 +327,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 		.enter()
 		.append('text')
 		.text(function(data, index) {
+      if (maxHoriz < minForGridLines) { return index/10 } // microscale
       if (maxHoriz + 1 < maxForGridLines) {
         return index
       }
@@ -320,6 +337,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 		.attr('text-anchor', 'center')
 		.attr('font-size', fontSize)
 		.attr('x', function(data, index){
+      if (maxHoriz < minForGridLines) { return spaceLeftForText + xScale(data) - fontSize/3} // microscale
 			return spaceLeftForText + xScale(index) - fontSize/3
 		})
 		.attr('y', spaceAtTop - fontSize - stateBarMargin / 2)

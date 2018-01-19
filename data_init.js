@@ -19,6 +19,11 @@ let data_4 = new Promise(function(resolve, reject){
 		resolve(data)
 	})
 })
+let data_5 = new Promise(function(resolve, reject){
+	d3.json('./resp_data_5_micro.json', function(data) {
+		resolve(data)
+	})
+})
 
 // loading the lookup json
 let lku = new Promise(function(resolve, reject){
@@ -52,7 +57,7 @@ let settingsObj = {
 // id of the html node for chart
 let chartMountNodeIdStr = 'chartMount'
 
-let data = data_1
+let data = data_5
 
 Promise.all([data, lku]).then(function(values){
 
