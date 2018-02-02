@@ -511,7 +511,8 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
     let tooltipStr = '<strong>' + d.locName + groupName + '<br>' + Number(d.dv).toFixed(decimalPlaces) + d.dvu + '</strong>'
 
     if (isNumber(d.lci) && isNumber(d.hci)) {
-      tooltipStr += '<br>' + settingsObj.confidenceIntervalLabel + ' (' + d.lci + ' - ' + d.hci + ')'
+      tooltipStr += '<br>' + settingsObj.confidenceIntervalLabel + ' (' + Number(d.lci).toFixed(decimalPlaces) 
+      + ' - ' + Number(d.hci).toFixed(decimalPlaces) + ')'
     }
 
     if (isNumber(d.ss)) {
