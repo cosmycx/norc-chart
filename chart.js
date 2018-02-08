@@ -198,9 +198,12 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
   let scaleExtend = 1
   if (maxHoriz < 1) { scaleExtend = 0.1 }
 
+  let _maxForGridLines = 15 // maximum for maxHoriz val after grid lines are at 5 interval
+  if (maxHoriz + 1 > _maxForGridLines) { scaleExtend = 5 - maxHoriz % 5 }
+
 	var xScale = d3.scaleLinear()
 									.domain([0, maxHoriz + scaleExtend])
-									.range([0, barSvgWidth - 10])
+									.range([0, barSvgWidth])
 
   let statesSpacingFactor = 3
 
@@ -272,7 +275,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 
 
   // grid vertical lines
-  let maxForGridLines = 15
+  let maxForGridLines = _maxForGridLines
   let minForGridLines = 1
 
   let gridAdjust = 1
