@@ -200,7 +200,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 
 	var xScale = d3.scaleLinear()
 									.domain([0, maxHoriz + scaleExtend])
-									.range([0, barSvgWidth])
+									.range([0, barSvgWidth - 10])
 
   let statesSpacingFactor = 3
 
