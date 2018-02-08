@@ -19,11 +19,6 @@ let data_4 = new Promise(function(resolve, reject){
 		resolve(data)
 	})
 })
-let data_5 = new Promise(function(resolve, reject){
-	d3.json('./resp_data_5_micro.json', function(data) {
-		resolve(data)
-	})
-})
 
 // loading the lookup json
 let lku = new Promise(function(resolve, reject){
@@ -39,7 +34,7 @@ let compareArr = ['Overall', 'Year', 'Response', 'AgeGroup', 'Gender', 'RaceEthn
 let settingsObj = {
 	colorsArrStr: ['#377eb8', 'Orange', 'Tomato', 'Purple', 'Green', 'Magenta', 'Blue'],
 	chartTitleStr: 'Percent (%)',
-	dataCompareColumn: 'Overall',
+	dataCompareColumn: 're',
 	legendTitleStr: 'Age Group',
 	decimalPlaces: 2,
 	confidenceIntervalLabel: '95% CI'
@@ -57,13 +52,13 @@ let settingsObj = {
 // id of the html node for chart
 let chartMountNodeIdStr = 'chartMount'
 
-let data = data_5
+let data = data_4
 
 Promise.all([data, lku]).then(function(values){
 
 	let dataObj = values[0]
 	let lku = values[1]
-	let compareStr = compareArr[0]
+	let compareStr = compareArr[5] // 'Age Groups'
 
 	// chart making function
 	makeChart(dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)

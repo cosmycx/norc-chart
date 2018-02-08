@@ -182,8 +182,8 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 	let intervalLineColor = 'Black'
 	let intervalStrokeWidth = 1
 
-	let spaceAtTop = 50
-	let axisColor = 'Gray'
+	let spaceAtTop = 70
+	let axisColor = '#CCC'
 
   // calculated width settings
   let barSvgWidth = tentvSvgWidth - spaceLeftForText - 3 * fontSize
@@ -216,12 +216,12 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
   }
 
 	// title
-	let chartTitle = settingsObj.chartTitleStr || ''
-	d3.select('#' + chartMountNodeIdStr)
-		.append('h4')
-		.text(chartTitle)
-		.style('text-align', 'center')
-    .style('width', svgChartWidth + 'px')
+	// let chartTitle = settingsObj.chartTitleStr || ''
+	// d3.select('#' + chartMountNodeIdStr)
+	// 	.append('h4')
+	// 	.text(chartTitle)
+	// 	.style('text-align', 'center')
+  //   .style('width', svgChartWidth + 'px')
 
 
   // legend
@@ -253,6 +253,16 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 									.attr('width', svgChartWidth)
 									.attr('height', svgChartHeight)
                   .attr('id', 'svgChart')
+
+
+  // chart tiltle
+  svgChart.append('text')
+		      .text(settingsObj.chartTitleStr || '')
+		      .attr('font-family', 'Lato')
+		      .attr('text-anchor', 'start')
+		      .attr('font-size', '1.1em')
+	        .attr('x', svgChartWidth/2)
+		      .attr('y', 20)
 
 
 	let barTooltip = d3.select('#' + chartMountNodeIdStr)
@@ -316,9 +326,9 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
         }
         if (index % 5 === 0) { return svgChartHeight - stateBarMargin/2 }
       })
-			.attr('stroke-dasharray', function(data, index) {
-				if (index !== 0) return '3, 10'
-			})
+			// .attr('stroke-dasharray', function(data, index) {
+			// 	if (index !== 0) return '3, 10'
+			// })
 			.attr('stroke-width', '1')
 			.attr('stroke', axisColor)
 
@@ -511,7 +521,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
     let tooltipStr = '<strong>' + d.locName + groupName + '<br>' + Number(d.dv).toFixed(decimalPlaces) + d.dvu + '</strong>'
 
     if (isNumber(d.lci) && isNumber(d.hci)) {
-      tooltipStr += '<br>' + settingsObj.confidenceIntervalLabel + ' (' + Number(d.lci).toFixed(decimalPlaces) 
+      tooltipStr += '<br>' + settingsObj.confidenceIntervalLabel + ' (' + Number(d.lci).toFixed(decimalPlaces)
       + ' - ' + Number(d.hci).toFixed(decimalPlaces) + ')'
     }
 
