@@ -266,7 +266,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 		      .attr('font-size', '14px')
           .attr('font-weight', 'bold')
 	        .attr('x', spaceLeftForText - paddingTextToChart + (svgChartWidth - spaceLeftForText) / 2)
-		      .attr('y', 30)
+		      .attr('y', 25)
 
 
 	let barTooltip = d3.select('#' + chartMountNodeIdStr)
