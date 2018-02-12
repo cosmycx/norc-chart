@@ -265,7 +265,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 		      .attr('text-anchor', 'middle')
 		      .attr('font-size', '14px')
           .attr('font-weight', 'bold')
-	        .attr('x', spaceLeftForText + (svgChartWidth - spaceLeftForText - paddingTextToChart) / 2)
+	        .attr('x', spaceLeftForText - paddingTextToChart + (svgChartWidth - spaceLeftForText) / 2)
 		      .attr('y', 20)
 
 
