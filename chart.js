@@ -262,9 +262,10 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
   svgChart.append('text')
 		      .text(settingsObj.chartTitleStr || '')
 		      .attr('font-family', 'Lato')
-		      .attr('text-anchor', 'start')
-		      .attr('font-size', '1.1em')
-	        .attr('x', svgChartWidth/2)
+		      .attr('text-anchor', 'middle')
+		      .attr('font-size', '14px')
+          .attr('font-weight', 'bold')
+	        .attr('x', spaceLeftForText + (svgChartWidth - spaceLeftForText - paddingTextToChart) / 2)
 		      .attr('y', 20)
 
 
