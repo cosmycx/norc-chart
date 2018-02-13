@@ -195,7 +195,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 	let maxDv = d3.max(dataObj, function(d){ return parseFloat(d.dv) })
 	let maxHoriz = Math.max(maxHci, maxDv)
 
-  let scaleExtend = 1
+  let scaleExtend = 1 - maxHoriz % 1
   if (maxHoriz < 1) { scaleExtend = 0.1 }
 
   let _maxForGridLines = 15 // maximum for maxHoriz val after grid lines are at 5 interval
