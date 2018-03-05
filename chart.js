@@ -177,7 +177,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 
 	let paddingTextToChart = 15
 	let spaceLeftForText = 140 + paddingTextToChart
-	let fontSize = 12
+	let fontSize = 14
 
 	let intervalLineColor = 'Black'
 	let intervalStrokeWidth = 1
