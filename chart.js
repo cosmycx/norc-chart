@@ -8,6 +8,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
   let dataCompareColumn = settingsObj.dataCompareColumn
   let legendTitleStr = settingsObj.legendTitleStr
   let decimalPlaces = settingsObj.decimalPlaces
+  let chartSummary = settingsObj.chartSummary
 
 	// console.log('dataObj: ', dataObj)
 	// console.log('lookupObj: ', lookupObj)
@@ -257,6 +258,9 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 									.attr('height', svgChartHeight)
                   .attr('id', 'svgChart')
 
+  // chart summary
+  svgChart.append('desc')
+          .text(chartSummary)
 
   // chart tiltle
   svgChart.append('text')
