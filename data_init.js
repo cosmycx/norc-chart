@@ -1,27 +1,33 @@
 // loading the response json
-let data_1 = new Promise(function(resolve, reject){
-	d3.json('./respOver_1.json', function(data) {
-		resolve(data)
-	})
-})
-let data_2 = new Promise(function(resolve, reject){
-	d3.json('./respOver_2.json', function(data) {
-		resolve(data)
-	})
-})
-let data_multiple = new Promise(function(resolve, reject){
-	d3.json('./respMultBars.json', function(data) {
-		resolve(data)
-	})
-})
-let data_4 = new Promise(function(resolve, reject){
-	d3.json('./resp_data_4.json', function(data) {
-		resolve(data)
-	})
-})
+// let data_1 = new Promise(function(resolve, reject){
+// 	d3.json('./respOver_1.json', function(data) {
+// 		resolve(data)
+// 	})
+// })
+// let data_2 = new Promise(function(resolve, reject){
+// 	d3.json('./respOver_2.json', function(data) {
+// 		resolve(data)
+// 	})
+// })
+// let data_multiple = new Promise(function(resolve, reject){
+// 	d3.json('./respMultBars.json', function(data) {
+// 		resolve(data)
+// 	})
+// })
+// let data_4 = new Promise(function(resolve, reject){
+// 	d3.json('./resp_data_4.json', function(data) {
+// 		resolve(data)
+// 	})
+// })
+//
+// let data_6 = new Promise(function(resolve, reject){
+// 	d3.json('./resp_data_6.json', function(data) {
+// 		resolve(data)
+// 	})
+// })
 
-let data_6 = new Promise(function(resolve, reject){
-	d3.json('./resp_data_6.json', function(data) {
+let data_7 = new Promise(function(resolve, reject){
+	d3.json('./respDataEmptySpace.json', function(data) {
 		resolve(data)
 	})
 })
@@ -40,8 +46,8 @@ let compareArr = ['Overall', 'Year', 'Response', 'AgeGroup', 'Gender', 'RaceEthn
 let settingsObj = {
 	colorsArrStr: ['#377eb8', 'Orange', 'Tomato', 'Purple', 'Green', 'Magenta', 'Blue'],
 	chartTitleStr: 'Percent (%)',
-	dataCompareColumn: 'Overall',
-	legendTitleStr: 'Age Group',
+	dataCompareColumn: 're', // Overall, yr, rs, ag,...groupMapping
+	legendTitleStr: 'Race/Ethnicity',
 	decimalPlaces: 2,
 	confidenceIntervalLabel: '95% CI'
 }
@@ -58,13 +64,14 @@ let settingsObj = {
 // id of the html node for chart
 let chartMountNodeIdStr = 'chartMount'
 
-let data = data_6
+let data = data_7
 
 Promise.all([data, lku]).then(function(values){
 
 	let dataObj = values[0]
 	let lku = values[1]
-	let compareStr = compareArr[0] // 'Age Groups'
+	let compareStr = compareArr[5]
+	//console.log(dataObj)
 
 	// chart making function
 	makeChart(dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)

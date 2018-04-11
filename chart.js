@@ -208,7 +208,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 
   let statesSpacingFactor = 3
 
-	let svgChartHeight = spaceAtTop + dataObjSorted.length * (barMargin + barThickness) + barMargin + allLocationsArr.length * stateBarMargin //+ allLocationsArr.length * barMargin
+	let svgChartHeight = spaceAtTop + dataObjSorted.length * (barMargin + barThickness) + barMargin + (allLocationsArr.length - emptyLocArr.length) * stateBarMargin
   if(compareStr === compareStrOverall) {
     svgChartHeight = spaceAtTop + dataObjSorted.length * (barMargin + barThickness) + barMargin
   }
