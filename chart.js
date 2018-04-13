@@ -206,7 +206,6 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 									.domain([0, maxHoriz + scaleExtend])
 									.range([0, barSvgWidth])
 
-  let statesSpacingFactor = 3
 
 	let svgChartHeight = spaceAtTop + dataObjSorted.length * (barMargin + barThickness) + barMargin + (allLocationsArr.length - emptyLocArr.length) * stateBarMargin
   if(compareStr === compareStrOverall) {
@@ -610,9 +609,9 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
 		.attr('x', spaceLeftForText - paddingTextToChart)
 		.attr('y', function(data, index) {
       if ( compareStr !== compareStrOverall ) {
-        return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + fontSize/3 + stateBarMargin * Math.floor(index / totalBarsArr.length)
+        return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + stateBarMargin * Math.floor(index / totalBarsArr.length)
       }
-				return spaceAtTop + barMargin * (index+1) + barThickness * index + barThickness/2 + fontSize/3
+				return spaceAtTop + barMargin * (index+1) + barThickness * index + barThickness/2
 		 })
 
 }
