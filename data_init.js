@@ -1,9 +1,9 @@
 // loading the response json
-// let data_1 = new Promise(function(resolve, reject){
-// 	d3.json('./respOver_1.json', function(data) {
-// 		resolve(data)
-// 	})
-// })
+let data_1 = new Promise(function(resolve, reject){
+	d3.json('./respOver_1.json', function(data) {
+		resolve(data)
+	})
+})
 // let data_2 = new Promise(function(resolve, reject){
 // 	d3.json('./respOver_2.json', function(data) {
 // 		resolve(data)
@@ -26,11 +26,11 @@
 // 	})
 // })
 
-let data_7 = new Promise(function(resolve, reject){
-	d3.json('./respDataEmptySpace.json', function(data) {
-		resolve(data)
-	})
-})
+// let data_7 = new Promise(function(resolve, reject){
+// 	d3.json('./respDataEmptySpace.json', function(data) {
+// 		resolve(data)
+// 	})
+// })
 
 // loading the lookup json
 let lku = new Promise(function(resolve, reject){
@@ -46,7 +46,7 @@ let compareArr = ['Overall', 'Year', 'Response', 'AgeGroup', 'Gender', 'RaceEthn
 let settingsObj = {
 	colorsArrStr: ['#377eb8', 'Orange', 'Tomato', 'Purple', 'Green', 'Magenta', 'Blue'],
 	chartTitleStr: 'Percent (%)',
-	dataCompareColumn: 're', // Overall, yr, rs, ag,...groupMapping
+	dataCompareColumn: 'Overall', // Overall, yr, rs, ag,...groupMapping
 	legendTitleStr: 'Race/Ethnicity',
 	decimalPlaces: 2,
 	confidenceIntervalLabel: '95% CI'
@@ -64,13 +64,13 @@ let settingsObj = {
 // id of the html node for chart
 let chartMountNodeIdStr = 'chartMount'
 
-let data = data_7
+let data = data_1
 
 Promise.all([data, lku]).then(function(values){
 
 	let dataObj = values[0]
 	let lku = values[1]
-	let compareStr = compareArr[5]
+	let compareStr = compareArr[0]
 	//console.log(dataObj)
 
 	// chart making function

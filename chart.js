@@ -611,7 +611,7 @@ function makeChart (dataObj,  lku, compareStr, settingsObj, chartMountNodeIdStr)
       if ( compareStr !== compareStrOverall ) {
         return spaceAtTop + barMargin * (index + 1) + barThickness * index + barThickness/2 + stateBarMargin * Math.floor(index / totalBarsArr.length)
       }
-				return spaceAtTop + barMargin * (index+1) + barThickness * index + barThickness/2
+				return spaceAtTop + barMargin * (index+1) + barThickness * index + barThickness/2 + fontSize/3
 		 })
 
 }
